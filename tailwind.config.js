@@ -6,6 +6,20 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      'lightCream': '#FFF3E3',
+      'lighterCream': '#FCF8F3',
+      'primaryColor': '#B88E2F',
+      'white': '#FFFFFF',
+      'red': '#FF0000',
+      'green': '#00FF00',
+      'blue': '#0000FF',
+      'black': '#000000',
+      'lightGrey': '#666666',
+      'ashColor': '#F4F5F7',
+      'lightAsh': '#B0B0B0',
+      'thickAsh': '#898989'
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -14,5 +28,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography'), require("daisyui")],
 };
