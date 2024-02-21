@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${montserrat.className} max-w-7xl mx-auto`}>
         <NavBar />
-        <main className="">
+        <main className="min-h-[65vh]">
           {children}
         </main>
         <Footer />

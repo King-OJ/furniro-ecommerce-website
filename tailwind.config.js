@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     colors: {
+      'cream': '#F9F1E7',
       'lightCream': '#FFF3E3',
       'lighterCream': '#FCF8F3',
       'primaryColor': '#B88E2F',

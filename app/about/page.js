@@ -2,9 +2,9 @@
 
 const page = () => {
   return (
-    <div>
-      <h1 className="text-3xl">About Page</h1>
-    </div>
+    <div className="min-h-[65vh]">
+        <h1 className="text-3xl">About Page</h1>
+      </div>
   )
 }
 

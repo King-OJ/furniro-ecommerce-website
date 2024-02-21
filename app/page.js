@@ -1,5 +1,6 @@
+import SingleProduct from "@/components/SingleProduct";
 import Image from "next/image"
-import { BsShare, BsFilter, BsHeart, BsArrowRight, BsDash} from "react-icons/bs";
+import { BsArrowRight, BsDash} from "react-icons/bs";
 
 export default function Home() {
 
@@ -80,7 +81,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero min-h-[70vh]" style={{backgroundImage: 'url(/furniro-hero.png)'}}>
+      <section className="hero min-h-[70vh]" style={{backgroundImage: 'url(/furniro-hero.png)', backgroundRepeat: 'no'}}>
         <div className="hero-overlay bg-opacity-20"></div>
         <div className="hero-content w-full pr-6">
           <div className="max-w-md ml-auto bg-lightCream py-10 px-6">
@@ -95,7 +96,7 @@ export default function Home() {
       <section id="range">
         <div className="py-16 px-16">
           {/* section header */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-10 space-y-2">
             <h2 className="font-bold text-2xl capitalize">browse the range</h2>
             <p className="text-lightGrey text-base">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
           </div>
@@ -148,57 +149,7 @@ export default function Home() {
             
             {products.map((product, i)=> {
               return (
-                <div key={i} className="w-full bg-ashColor relative group cursor-pointer">
-                {/* overlay */}
-                <div className="absolute bottom-0 left-0 right-0 overflow-hidden w-full h-0 group-hover:z-10 group-hover:h-full transition-all duration-200 bg-black bg-opacity-40">
-                  <div className="grid place-content-center h-full w-full">
-                    <button className="btn px-6 py-2 rounded-none text-primaryColor font-semibold">Add to cart</button>
-                    <ul className="mt-3 flex items-center space-x-4">
-                      <li className="flex text-xs text-white space-x-1 items-center">
-                        <BsShare />
-                        <span>Share</span>
-                      </li>
-                      <li className="flex text-xs text-white space-x-1 items-center">
-                        <BsFilter />
-                        <span>Compare</span>
-                      </li>
-                      <li className="flex text-xs text-white space-x-1 items-center">
-                        <BsHeart />
-                        <span>Like</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                {         product.discount &&  
-                  <div className="absolute text-sm top-4 right-4 h-10 w-10 grid place-content-center rounded-full bg-opacity-70 bg-red text-white">{`-${product.discount}%`}</div> 
-                }                
-                {         product.newProduct &&  
-                  <div className="absolute text-sm top-4 right-4 h-10 w-10 grid place-content-center rounded-full bg-opacity-90 bg-green text-white">New</div> 
-                }                
-                <div className=""> 
-                  <Image
-                      src={product.productImg}
-                      width={200}
-                      height={200}
-                      alt="furniro logo"
-                      className="w-full aspect-auto h-auto"
-                    />
-                    <div className="p-3 space-y-1">
-                      <h4 className="font-bold capitalize">{product.title}</h4>
-                      <p className="text-xs text-thickAsh">{product.subtitle}</p>
-                      <div className="flex items-center justify-between">
-                        <p className="font-bold text-sm">
-                          {`$${product.newPrice}`}
-                        </p>
-                        {product.oldPrice &&
-                          <p className="font-bold text-xs line-through text-lightAsh">
-                          {`$${product.oldPrice}`}
-                        </p>}
-                      </div>
-                    </div>
-                </div>
-                
-              </div>
+                <SingleProduct key={i} product={product} />
               )
             })}
            

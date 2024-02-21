@@ -23,7 +23,7 @@ const links = [
 
 const NavBar = () => {
   return (
-    <nav className="navbar bg-base-100 justify-between">
+    <nav className="navbar shadow-lg bg-base-100 justify-between">
       <a className="btn btn-ghost text-xl">
         <Image
             src='/furniroLogo.png'
