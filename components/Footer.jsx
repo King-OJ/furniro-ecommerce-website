@@ -34,14 +34,14 @@ export default function Footer() {
                 <h6 className="footer-title">Newsletter</h6> 
                 <div className="flex items-center space-x-4">
                     <input type="text" placeholder="Enter your email address" className="placeholder:text-xs placeholder:capitalize outline-none pb-1 border-black border-b-2 " /> 
-                    <button type="submit" className=" pb-1 uppercase border-black border-b-2 text-xs font-semibold">Subscribe</button>
+                    <button type="submit" className=" pb-1 uppercase border-black border-b-2  ">Subscribe</button>
                 </div>
             
             </form>
         </div>
 
-        <aside className="pt-5 mt-5 border-t-2 border-base-200">
-            <p>2023 furino. All rights reverved</p>
+        <aside className="pt-5 mt-5 border-t-2 text-xs md:text-sm border-base-200">
+            <p>2024 furino. All rights reverved</p>
         </aside>
 
         

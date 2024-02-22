@@ -1,83 +1,10 @@
 import SingleProduct from "@/components/SingleProduct";
 import Image from "next/image"
 import { BsArrowRight, BsDash} from "react-icons/bs";
+import { products } from "@/actions";
+import Link from "next/link"
 
 export default function Home() {
-
-  const products = [
-    {
-      title: 'syltherine',
-      subtitle: 'stylish cafe chair',
-      newPrice: '2500.00',
-      oldPrice: '3500.00',
-      productImg: '/product1.png',
-      discount: 30,
-      newProduct: false
-    },
-    {
-      title: 'leviosa',
-      subtitle: 'stylish cafe chair',
-      newPrice: '2500.00',
-      oldPrice: '',
-      productImg: '/product2.png',
-      discount: null,
-      newProduct: false
-    },
-    {
-      title: 'lolito',
-      subtitle: 'luxury big sofa',
-      newPrice: '7000.00',
-      oldPrice: '14000.00',
-      productImg: '/product3.png',
-      discount: 50,
-      newProduct: false
-    },
-    {
-      title: 'respira',
-      subtitle: 'outdoor bar table and stool',
-      newPrice: '50000.00',
-      oldPrice: '',
-      productImg: '/product4.png',
-      discount: null,
-      newProduct: true
-    },
-    {
-      title: 'grifo',
-      subtitle: 'night lamp',
-      newPrice: '1500.00',
-      oldPrice: '',
-      productImg: '/product5.png',
-      discount: null,
-      newProduct: false
-    },
-    {
-      title: 'muggo',
-      subtitle: 'small mug',
-      newPrice: '2500.00',
-      oldPrice: '',
-      productImg: '/product6.png',
-      discount: null,
-      newProduct: true
-    },
-    {
-      title: 'pingky',
-      subtitle: 'cute bed set',
-      newPrice: '7000.00',
-      oldPrice: '14000.00',
-      productImg: '/product7.png',
-      discount: 50,
-      newProduct: false
-    },
-    {
-      title: 'potty',
-      subtitle: 'minimalist flower pot',
-      newPrice: '5000.00',
-      oldPrice: '',
-      productImg: '/product8.png',
-      discount: null,
-      newProduct: true
-    },
-  ]
 
   return (
     <>
@@ -145,7 +72,7 @@ export default function Home() {
           </div>
 
           {/* section content */}
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-4 gap-6">
             
             {products.map((product, i)=> {
               return (
@@ -158,7 +85,7 @@ export default function Home() {
 
           {/* show more button */}
           <div className="mt-10 flex justify-center">
-            <button className="btn btn-outline rounded-none px-16 border-primaryColor capitalize text-primaryColor">show more</button>
+            <Link href='/shop' className="btn btn-outline rounded-none px-16 border-primaryColor capitalize text-primaryColor">show more</Link>
           </div>
         </div>
       </section>
