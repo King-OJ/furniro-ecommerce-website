@@ -9,6 +9,7 @@ import { allProducts } from "@/actions";
 import SingleProduct from "@/components/SingleProduct";
 
 const page = () => {
+    
     return (
       <>
         <section id="shopHeader" className="">
@@ -67,19 +68,19 @@ const page = () => {
 
         <section id="products">
           <div className="px-10 py-16">
-            <div className="grid md:grid-cols-4 gap-6">
-            {allProducts.map((product, i)=> {
-              return (
-                <SingleProduct key={i} product={product} />
-              )
-            })}
-            </div>
+            <ul className="grid md:grid-cols-4 gap-6">
+              {allProducts.map((product, i)=> {
+                return (
+                  <SingleProduct key={i} product={product} />
+                )
+              })}
+            </ul>
             <div className="mt-10 flex justify-center">
               <ul className="flex items-center space-x-4">
-                <li><buttton className="btn bg-primaryColor text-white font-normal">1</buttton></li>
-                <li><buttton className="btn bg-cream text-black font-normal">2</buttton></li>
-                <li><buttton className="btn bg-cream text-black font-normal">3</buttton></li>
-                <li><buttton className="btn bg-cream text-black font-normal">Next</buttton></li>
+                <li><button className="btn bg-primaryColor text-white font-normal">1</button></li>
+                <li><button className="btn bg-cream text-black font-normal">2</button></li>
+                <li><button className="btn bg-cream text-black font-normal">3</button></li>
+                <li><button className="btn bg-cream text-black font-normal">Next</button></li>
               </ul>
             </div>
           </div>

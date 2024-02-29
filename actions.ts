@@ -1,4 +1,43 @@
 
+export const relatedProducts = [
+    {
+      title: 'syltherine',
+      subtitle: 'stylish cafe chair',
+      newPrice: '2500.00',
+      oldPrice: '3500.00',
+      productImg: '/product1.png',
+      discount: 30,
+      newProduct: false
+    },
+    {
+      title: 'leviosa',
+      subtitle: 'stylish cafe chair',
+      newPrice: '2500.00',
+      oldPrice: '',
+      productImg: '/product2.png',
+      discount: null,
+      newProduct: false
+    },
+    {
+      title: 'lolito',
+      subtitle: 'luxury big sofa',
+      newPrice: '7000.00',
+      oldPrice: '14000.00',
+      productImg: '/product3.png',
+      discount: 50,
+      newProduct: false
+    },
+    {
+      title: 'respira',
+      subtitle: 'outdoor bar table and stool',
+      newPrice: '50000.00',
+      oldPrice: '',
+      productImg: '/product4.png',
+      discount: null,
+      newProduct: true
+    }
+  ]
+  
 export const products = [
     {
       title: 'syltherine',

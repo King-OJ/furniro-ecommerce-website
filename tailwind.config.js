@@ -13,6 +13,7 @@ module.exports = {
       'primaryColor': '#B88E2F',
       'white': '#FFFFFF',
       'red': '#FF0000',
+      'purple': '#816DFA',
       'green': '#00FF00',
       'blue': '#0000FF',
       'black': '#000000',
@@ -22,12 +23,35 @@ module.exports = {
       'thickAsh': '#898989'
     },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      
     },
   },
-  plugins: [require('@tailwindcss/typography'), require("daisyui")],
+  plugins: [ require("daisyui")],
+  daisyui: {
+        themes: [
+          {
+            light: {
+                      
+              "primary": "#B88E2F",
+                      
+              "secondary": "#F9F1E7",
+                      
+              "accent": "#00ff00",
+                      
+              "neutral": "#ff00ff",
+                      
+              "base-100": "#ffffff",
+                      
+              "info": "#0000ff",
+                      
+              "success": "#00ff00",
+                      
+              "warning": "#00ff00",
+                      
+              "error": "#ff0000",
+                      
+            },
+          },
+        ],
+      },
 };

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <section className="hero min-h-[70vh]" style={{backgroundImage: 'url(/furniro-hero.png)', backgroundRepeat: 'no'}}>
-        <div className="hero-overlay bg-opacity-20"></div>
+        <div className="hero-overlay bg-base-100 bg-opacity-20"></div>
         <div className="hero-content w-full pr-6">
           <div className="max-w-md ml-auto bg-lightCream py-10 px-6">
             <p className="tracking-wider mb-1">New Arrival</p>
@@ -37,7 +37,7 @@ export default function Home() {
                 alt="furniro logo"
                 className="w-auto h-auto"
               />
-              <h4 className="font-bold mt-2">Dining</h4>
+              <h6 className="font-bold mt-2">Dining</h6>
             </div>
             <div className="h-full text-center">
               <Image
@@ -47,7 +47,7 @@ export default function Home() {
                 alt="furniro logo"
                 className="w-auto h-auto"
               />
-              <h4 className="font-bold mt-2">Living</h4>
+              <h6 className="font-bold mt-2">Living</h6>
             </div>
             <div className="h-full text-center">
               <Image
@@ -57,7 +57,7 @@ export default function Home() {
                 alt="furniro logo"
                 className="w-auto h-auto"
               />
-              <h4 className="font-bold mt-2">Bedroom</h4>
+              <h6 className="font-bold mt-2">Bedroom</h6>
             </div>
             
           </div>
@@ -65,14 +65,14 @@ export default function Home() {
       </section>
 
       <section id="products">
-        <div className="px-10 xl:px-0 py-16">
+        <div className="px-10 xl:px-0 py-10">
           {/* section header */}
           <div className="text-center mb-10">
             <h2 className="font-bold text-2xl capitalize">our products</h2>
           </div>
 
           {/* section content */}
-          <div className="grid md:grid-cols-4 gap-6">
+          <ul className="grid md:grid-cols-4 gap-6">
             
             {products.map((product, i)=> {
               return (
@@ -81,11 +81,11 @@ export default function Home() {
             })}
            
          
-          </div>
+          </ul>
 
           {/* show more button */}
           <div className="mt-10 flex justify-center">
-            <Link href='/shop' className="btn btn-outline rounded-none px-16 border-primaryColor capitalize text-primaryColor">show more</Link>
+            <Link href='/shop' className="btn btn-primary btn-outline min-h-10 h-10 md:h-12 text-xs md:text-sm rounded-none px-16 capitalize">show more</Link>
           </div>
         </div>
       </section>
