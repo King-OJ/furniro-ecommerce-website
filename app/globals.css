@@ -9,3 +9,7 @@ h4,
 h5 {
     @apply tracking-wide font-semibold text-lg md:text-xl capitalize;
 }
+
+.btn {
+    @apply min-h-8;
+}
