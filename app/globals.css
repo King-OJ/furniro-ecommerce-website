@@ -7,9 +7,9 @@ h2,
 h3,
 h4,
 h5 {
-    @apply tracking-wide font-semibold text-lg md:text-xl capitalize;
+  @apply text-lg font-semibold capitalize tracking-wide md:text-xl;
 }
 
 .btn {
-    @apply min-h-8;
+  @apply h-10 min-h-6;
 }
