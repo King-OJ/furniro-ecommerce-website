@@ -11,6 +11,8 @@ import {
 import { MdOutlineStar } from "react-icons/md";
 import { formatPrice } from "@/utils/formatPrice";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import { cache } from "react";
 
 interface ProductDetailsPageProps {
   params: {
@@ -18,14 +20,36 @@ interface ProductDetailsPageProps {
   };
 }
 
+const getProduct = cache(async (id: string) => {
+  const data = await getSingleProduct(id);
+  if (!data) notFound();
+  return data;
+});
+
+export async function generateMetaData({
+  params,
+}: ProductDetailsPageProps): Promise<Metadata> {
+  const product = await getProduct(params.id);
+
+  return {
+    title: product.name + " - Furniro",
+    description: product.description,
+    openGraph: {
+      images: [
+        {
+          url: product.imageUrl,
+        },
+      ],
+    },
+  };
+}
+
 export default async function ProductDetailsPage({
   params,
 }: ProductDetailsPageProps) {
-  const data = await getSingleProduct(params.id);
+  const product = await getProduct(params.id);
 
-  const { name, price, discount, description, id } = data;
-
-  if (!data) notFound();
+  const { name, price, discount, description, id } = product;
 
   return (
     <>

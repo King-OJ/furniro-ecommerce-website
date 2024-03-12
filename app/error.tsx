@@ -1,18 +1,30 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 
-export default function error({ error }) {
-  console.log(error);
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  // useEffect(() => {
+  //   // Log the error to an error reporting service
+  //   console.error(error);
+  //   console.error(error.message);
+  // }, []);
 
   return (
     <div className="w-full px-6 py-20 text-center">
-      Something went wrong. Please refresh the page!
-      <Link href="/">
-        <button className="btn btn-primary mx-auto my-4 block text-white">
-          Back Home
-        </button>
-      </Link>
+      <h2>Something went wrong!</h2>
+      <button
+        onClick={() => reset()}
+        className="btn btn-primary mx-auto my-4 block text-white"
+      >
+        Try Again
+      </button>
     </div>
   );
 }
