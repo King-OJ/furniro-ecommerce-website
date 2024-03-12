@@ -3,13 +3,14 @@
 import { useState } from "react";
 
 export default function AddDiscount() {
-  const [showDiscountInput, setShowDiscountInput] = useState(false);
+  const [showDiscountInput, setShowDiscountInput] = useState(true);
   return (
     <div className="space-y-3 md:space-y-5">
       <div className="form-control max-w-xs">
         <label className="label cursor-pointer">
-          <span className="label-text">Add Discount</span>
+          <span className="label-text">Add Discount ?</span>
           <input
+            defaultChecked
             type="checkbox"
             onClick={() => setShowDiscountInput(!showDiscountInput)}
             className="checkbox-secondary checkbox border-primaryColor"
@@ -22,7 +23,7 @@ export default function AddDiscount() {
           required
           name="discount"
           type="number"
-          placeholder="Enter Discount Amount"
+          placeholder="Enter Discount"
           className="input input-bordered w-full"
         />
       )}

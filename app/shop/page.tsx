@@ -39,8 +39,8 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="-mt-1 bg-cream px-10 py-6">
-          <div className="flex items-center justify-between text-sm">
+        <div className="-mt-1 bg-cream px-6 py-4 md:px-10 md:py-6">
+          <div className="flex flex-col items-center space-y-2 text-xs md:flex-row md:justify-between md:text-sm">
             <div className="flex items-center space-x-2 text-sm text-black">
               <ul className="flex items-center space-x-6">
                 <li className="flex items-center">
@@ -62,7 +62,7 @@ const page = () => {
                 <input
                   type="text"
                   defaultValue={16}
-                  className="grid h-8 w-8 place-content-center bg-white p-2 text-lightAsh outline-none"
+                  className="grid h-6 w-8 place-content-center bg-white p-2 text-lightAsh outline-none md:h-8 md:w-8"
                 />
               </div>
               <div className="flex items-center space-x-2">
@@ -70,7 +70,7 @@ const page = () => {
                 <select
                   name="sort"
                   id="sort"
-                  className="max-h-8 appearance-none bg-white px-4 py-2 text-lightAsh outline-none"
+                  className="max-h-6 appearance-none bg-white px-4 py-1 text-lightAsh outline-none md:max-h-8 md:py-2"
                 >
                   <option value="default">Default</option>
                 </select>
@@ -81,8 +81,8 @@ const page = () => {
       </section>
 
       <section id="products">
-        <div className="px-10 py-16">
-          <ul className="grid gap-6 md:grid-cols-4">
+        <div className="px-4 py-10 md:px-10 md:py-16">
+          <ul className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
             {allProducts.map((product, i) => {
               return <SingleProduct key={i} product={product} />;
             })}
@@ -116,9 +116,9 @@ const page = () => {
 
       <section className="bg-cream">
         <div className="px-6 py-10 md:py-12">
-          <ul className="grid gap-4 text-sm text-black md:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-4 text-xs text-black md:grid-cols-4 md:text-sm">
             <li className="flex items-center space-x-2">
-              <HiOutlineTrophy size={45} />
+              <HiOutlineTrophy size={40} />
               <div className="space-y-1">
                 <h6 className="font-semibold text-black">High Quality</h6>
                 <p className="text-xs text-thickAsh">
@@ -127,7 +127,7 @@ const page = () => {
               </div>
             </li>
             <li className="flex items-center space-x-2">
-              <BsPatchCheck size={45} />
+              <BsPatchCheck size={40} />
               <div className="space-y-1">
                 <h6 className="font-semibold text-black">
                   Warranty Protection
@@ -136,14 +136,14 @@ const page = () => {
               </div>
             </li>
             <li className="flex items-center space-x-2">
-              <TbTruckDelivery size={45} />
+              <TbTruckDelivery size={40} />
               <div className="space-y-1">
                 <h6 className="font-semibold text-black">Free Shipping</h6>
                 <p className="text-xs text-thickAsh">Order over $150</p>
               </div>
             </li>
             <li className="flex items-center space-x-2">
-              <MdSupportAgent size={45} />
+              <MdSupportAgent size={40} />
               <div className="space-y-1">
                 <h6 className="font-semibold text-black">24/7 Support</h6>
                 <p className="text-xs text-thickAsh">Dedicated support</p>

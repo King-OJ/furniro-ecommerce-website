@@ -1,4 +1,4 @@
-import { relatedProducts } from "@/utils/actions";
+import { getSingleProduct, relatedProducts } from "@/utils/actions";
 import SingleProduct from "@/components/SingleProduct";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,9 +9,23 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { MdOutlineStar } from "react-icons/md";
+import { formatPrice } from "@/utils/formatPrice";
+import { notFound } from "next/navigation";
 
-export default function page() {
-  const price = "250,000.00";
+interface ProductDetailsPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function ProductDetailsPage({
+  params,
+}: ProductDetailsPageProps) {
+  const data = await getSingleProduct(params.id);
+
+  const { name, price, discount, description, id } = data;
+
+  if (!data) notFound();
 
   return (
     <>
@@ -32,7 +46,7 @@ export default function page() {
             </div>
             <div className="h-6 w-[1px] bg-lightGrey"></div>
             <p className="text-xs font-semibold capitalize text-black">
-              asgaard sofa
+              {name}
             </p>
           </div>
         </div>
@@ -93,9 +107,11 @@ export default function page() {
 
             <div>
               <h6 className="mb-[2px] text-xl capitalize text-black md:text-2xl">
-                asgaard sofa
+                {name}
               </h6>
-              <p className="mb-1 text-base text-thickAsh md:text-lg">{`USD ${price}`}</p>
+              <p className="mb-1 text-base text-thickAsh md:text-lg">
+                {formatPrice(price)}
+              </p>
               <div className="flex text-lightAsh">
                 <ul className="flex">
                   <li>
@@ -117,12 +133,7 @@ export default function page() {
                 <div className="divider divider-horizontal mx-2"></div>
                 <p className="text-xs">5 Customer Review</p>
               </div>
-              <p className="my-3 text-xs leading-6 lg:text-sm">
-                Setting the bar as one of the loudest speakers in its class, the
-                Kilburn is a compact, stout-hearted hero with a well-balanced
-                audio which boasts a clear midrange and extended highs for a
-                sound.
-              </p>
+              <p className="my-3 text-xs leading-6 lg:text-sm">{description}</p>
               <div className="space-y-1">
                 <p className="text-xs text-lightAsh">Size</p>
                 <ul className="flex items-center space-x-2">
@@ -287,9 +298,9 @@ export default function page() {
       </section>
 
       <section>
-        <div className="p-10">
+        <div className="px-4 py-6 md:px-10 md:py-10">
           <h5 className="text-center">Related Products</h5>
-          <ul className="my-8 grid gap-6 md:grid-flow-col md:grid-cols-4">
+          <ul className="my-6 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
             {relatedProducts.map((product, i) => {
               return <SingleProduct key={i} product={product} />;
             })}

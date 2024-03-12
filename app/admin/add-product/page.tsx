@@ -22,7 +22,6 @@ async function addProduct(formData: FormData) {
   const name = formData.get("name")?.toString();
   const title = formData.get("title")?.toString();
   const description = formData.get("description")?.toString();
-  const newProduct = formData.get("newProduct");
   const discount = Number(formData.get("discount") || 0);
   const file = formData.get("image") as File;
   const price = Number(formData.get("price") || 0);
@@ -56,7 +55,6 @@ async function addProduct(formData: FormData) {
       title,
       description,
       discount,
-      newProduct: newProduct === "on" ? true : false,
       imageUrl: url.toString(),
       price,
     },
@@ -76,6 +74,7 @@ export default function page() {
           type="text"
           placeholder="Product Name"
           className="input input-bordered w-full"
+          autoCapitalize="on"
         />
         <input
           required
@@ -83,6 +82,7 @@ export default function page() {
           type="text"
           placeholder="Product Title"
           className="input input-bordered w-full"
+          autoCapitalize="on"
         />
         <textarea
           name="description"
@@ -104,20 +104,8 @@ export default function page() {
           placeholder="Price"
           className="input input-bordered w-full"
         />
-        <div className="space-y-1">
-          <div className="form-control max-w-xs">
-            <label className="label cursor-pointer">
-              <span className="label-text">New Product</span>
-              <input
-                type="checkbox"
-                defaultChecked
-                className="checkbox-secondary checkbox border-primaryColor"
-                name="newProduct"
-              />
-            </label>
-          </div>
-          <AddDiscount />
-        </div>
+
+        <AddDiscount />
 
         <FormSubmitBtn className="btn-block rounded-none text-white">
           Add Product

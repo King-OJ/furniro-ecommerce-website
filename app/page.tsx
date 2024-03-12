@@ -47,33 +47,33 @@ export default async function Home() {
           </div>
           {/* section content */}
           <div className="grid h-full grid-flow-col grid-cols-3 gap-6">
-            <div className="h-full text-center">
+            <div className="group h-full text-center hover:cursor-pointer">
               <Image
                 src="/range1.png"
                 width={300}
                 height={300}
                 alt="furniro logo"
-                className="h-auto w-auto"
+                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Dining</h6>
             </div>
-            <div className="h-full text-center">
+            <div className="group h-full text-center hover:cursor-pointer">
               <Image
                 src="/range2.png"
                 width={300}
                 height={300}
                 alt="furniro logo"
-                className="h-auto w-auto"
+                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Living</h6>
             </div>
-            <div className="h-full text-center">
+            <div className="group h-full text-center hover:cursor-pointer">
               <Image
                 src="/range3.png"
                 width={300}
                 height={300}
                 alt="furniro logo"
-                className="h-auto w-auto"
+                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Bedroom</h6>
             </div>
