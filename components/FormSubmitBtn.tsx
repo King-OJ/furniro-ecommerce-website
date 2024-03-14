@@ -22,7 +22,7 @@ export default function FormSubmitBtn({
       className={`btn btn-primary ${className}`}
       disabled={pending}
     >
-      {pending && <span className="loading loading-bars loading-xs" />}
+      {pending && <span className="loading loading-dots loading-xs" />}
       {children}
     </button>
   );

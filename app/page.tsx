@@ -4,7 +4,7 @@ import { BsArrowRight, BsDash } from "react-icons/bs";
 import { getProducts } from "@/utils/actions";
 import Link from "next/link";
 
-export default async function Home() {
+export default async function HomeServerComponent() {
   const products = await getProducts();
   // console.log(products);
 

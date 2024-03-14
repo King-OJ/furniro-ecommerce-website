@@ -22,7 +22,11 @@ const links = [
   },
 ];
 
-const NavBar = () => {
+interface NavBarProps {
+  setIsCartModalOpen: () => void;
+}
+
+const NavBar = ({ setIsCartModalOpen }: NavBarProps) => {
   return (
     <nav className="navbar justify-between bg-base-100 shadow-lg">
       <Link href="/" className="btn btn-ghost text-xl">
@@ -68,7 +72,10 @@ const NavBar = () => {
           </button>
         </li>
         <li className="">
-          <button className="btn btn-ghost text-lg">
+          <button
+            className="btn btn-ghost text-lg"
+            onClick={setIsCartModalOpen}
+          >
             <BsCart />
           </button>
         </li>

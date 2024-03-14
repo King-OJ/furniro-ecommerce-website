@@ -7,6 +7,7 @@ import { MdSplitscreen, MdSupportAgent } from "react-icons/md";
 import { HiOutlineTrophy } from "react-icons/hi2";
 import { allProducts } from "@/utils/actions";
 import SingleProduct from "@/components/SingleProduct";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -29,7 +30,9 @@ const page = () => {
                 </h3>
 
                 <div className="mt-2 flex items-center justify-between text-xs md:text-sm">
-                  <p className="font-semibold">Home</p>
+                  <Link href="/" className="font-semibold">
+                    Home
+                  </Link>
                   <span className="">
                     <FaChevronRight className="font-extrabold " />
                   </span>

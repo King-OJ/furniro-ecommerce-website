@@ -1,8 +1,6 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
-import ShoppingCart from "@/components/ShoppingCart";
+import ClientComponentLayout from "@/components/ClientComponentLayout";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -14,14 +12,15 @@ export const metadata = {
   description: "An Ecommerce app for furniro furniture",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${poppins.className} mx-auto min-w-[300px] max-w-7xl`}>
-        <NavBar />
-        {/* <ShoppingCart /> */}
-        <main className="min-h-[65vh]">{children}</main>
-        <Footer />
+        <ClientComponentLayout>{children}</ClientComponentLayout>
       </body>
     </html>
   );
