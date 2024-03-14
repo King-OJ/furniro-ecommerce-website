@@ -25,8 +25,14 @@ export default function AddToCart({
       }}
       className={className}
     >
-      Add To Cart{" "}
-      {isPending && <span className="loading loading-spinner loading-xs" />}
+      {isPending ? (
+        <span className="flex items-center space-x-1">
+          <span>Adding to Cart</span>
+          <span className="loading loading-spinner loading-xs" />
+        </span>
+      ) : (
+        "Add To Cart"
+      )}
     </button>
   );
 }
