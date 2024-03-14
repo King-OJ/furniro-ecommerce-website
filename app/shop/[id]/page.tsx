@@ -13,6 +13,8 @@ import { formatPrice } from "@/utils/formatPrice";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { cache } from "react";
+import AddToCart from "../../../components/AddToCart";
+import { addToCart } from "./actions";
 
 interface ProductDetailsPageProps {
   params: {
@@ -201,9 +203,11 @@ export default async function ProductDetailsPage({
                   </button>
                 </li>
                 <li>
-                  <button className="rounded-md border border-black px-3 py-2 md:px-6 ">
-                    Add To Cart
-                  </button>
+                  <AddToCart
+                    addToCart={addToCart}
+                    productId={id}
+                    className="rounded-md border border-black px-3 py-2 md:px-6"
+                  />
                 </li>
                 <li>
                   <button className="space-x-1 rounded-md border border-black px-3 py-2 md:px-6">

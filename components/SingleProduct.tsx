@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@prisma/client";
 import { formatPrice } from "@/utils/formatPrice";
+import AddToCart from "./AddToCart";
 
 interface SingleProductProps {
   product: Product;
@@ -23,9 +24,10 @@ export default function SingleProduct({ product }: SingleProductProps) {
         {/* overlay */}
         <div className="absolute bottom-0 left-0 right-0 h-0 w-full overflow-hidden bg-black bg-opacity-40 transition-all duration-200 group-hover:z-10 group-hover:h-full">
           <div className="grid h-full w-full place-content-center">
-            <button className="btn rounded-none px-6 py-1 text-sm font-semibold text-primaryColor">
-              Add to cart
-            </button>
+            <AddToCart
+              productId={"vvv"}
+              className="btn rounded-none px-6 py-1 text-sm font-semibold text-primaryColor"
+            />
             <ul className="mt-3 flex items-center space-x-4">
               <li className="flex items-center space-x-1 text-xs text-white">
                 <BsShare />

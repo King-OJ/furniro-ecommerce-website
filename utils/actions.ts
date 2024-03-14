@@ -1,4 +1,3 @@
-import cloudinary from "./cloudinary";
 import { prisma } from "./db/prisma";
 
 export const relatedProducts = [
@@ -212,12 +211,6 @@ export const products = [
     newProduct: true,
   },
 ];
-
-export async function uploadImgToCloudinary() {
-  const timestamp = Math.round(new Date().getTime() / 1000);
-
-  // return { timestamp, signature };
-}
 
 export async function getProducts() {
   return prisma.product.findMany({

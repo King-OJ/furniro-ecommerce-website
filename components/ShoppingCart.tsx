@@ -26,7 +26,7 @@ export default function ShoppingCart({
     <div
       className={
         isCartModalOpen
-          ? "fixed bottom-0 left-0 right-0 top-0 z-40 bg-black bg-opacity-50 transition-all duration-200"
+          ? "fixed bottom-0 left-0 right-0 top-0 z-40 bg-black bg-opacity-30 transition-all duration-200"
           : "hidden transition-all duration-200"
       }
     >
