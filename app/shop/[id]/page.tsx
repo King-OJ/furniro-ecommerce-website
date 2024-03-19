@@ -51,7 +51,7 @@ export default async function ProductDetailsPage({
 }: ProductDetailsPageProps) {
   const product = await getProduct(params.id);
 
-  const { name, price, discount, description, id } = product;
+  const { name, price, discount, description, id, imageUrl } = product;
 
   return (
     <>
@@ -120,13 +120,14 @@ export default async function ProductDetailsPage({
                   />
                 </li>
               </ul>
-              <div className="grid h-80 flex-1 place-content-center rounded-md bg-cream">
+              <div className="grid h-80 flex-1 place-content-center rounded-md border-2 border-cream">
                 <Image
-                  src="/Asgaard sofa 3.png"
+                  src={imageUrl}
                   alt="furniture img"
-                  height={300}
-                  width={300}
-                  className="aspect-auto h-full w-full"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="aspect-auto h-auto w-auto object-cover"
                 />
               </div>
             </div>
@@ -160,40 +161,43 @@ export default async function ProductDetailsPage({
                 <p className="text-xs">5 Customer Review</p>
               </div>
               <p className="my-3 text-xs leading-6 lg:text-sm">{description}</p>
-              <div className="space-y-1">
-                <p className="text-xs text-lightAsh">Size</p>
-                <ul className="flex items-center space-x-2">
-                  <li>
-                    <button className="btn h-7 min-h-[20px] bg-primaryColor p-[3px] px-3 text-xs font-normal text-white">
-                      X
-                    </button>
-                  </li>
-                  <li>
-                    <button className="btn h-7 min-h-[20px] bg-cream p-[3px] px-3 text-xs font-normal text-black">
-                      XL
-                    </button>
-                  </li>
-                  <li>
-                    <button className="btn h-7 min-h-[20px] bg-cream p-[3px] px-3 text-xs font-normal text-black">
-                      XS
-                    </button>
-                  </li>
-                </ul>
+              <div className="flex items-center justify-between md:flex-col md:items-start md:space-y-2">
+                <div className="space-y-1">
+                  <p className="text-xs text-lightAsh">Size</p>
+                  <ul className="flex items-center space-x-2">
+                    <li>
+                      <button className="btn h-7 min-h-[20px] bg-primaryColor p-[3px] px-3 text-xs font-normal text-white">
+                        X
+                      </button>
+                    </li>
+                    <li>
+                      <button className="btn h-7 min-h-[20px] bg-cream p-[3px] px-3 text-xs font-normal text-black">
+                        XL
+                      </button>
+                    </li>
+                    <li>
+                      <button className="btn h-7 min-h-[20px] bg-cream p-[3px] px-3 text-xs font-normal text-black">
+                        XS
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xs text-lightAsh">Color</p>
+                  <ul className="flex items-center space-x-2">
+                    <li>
+                      <button className="inline-block h-5 w-5  rounded-full bg-purple"></button>
+                    </li>
+                    <li>
+                      <button className="inline-block h-5 w-5  rounded-full bg-black"></button>
+                    </li>
+                    <li>
+                      <button className="inline-block h-5 w-5  rounded-full bg-primaryColor"></button>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="my-2 space-y-1">
-                <p className="text-xs text-lightAsh">Color</p>
-                <ul className="flex items-center space-x-2">
-                  <li>
-                    <button className="inline-block h-5 w-5  rounded-full bg-purple"></button>
-                  </li>
-                  <li>
-                    <button className="inline-block h-5 w-5  rounded-full bg-black"></button>
-                  </li>
-                  <li>
-                    <button className="inline-block h-5 w-5  rounded-full bg-primaryColor"></button>
-                  </li>
-                </ul>
-              </div>
+
               <ul className="mt-4 flex space-x-2 text-xs  text-black">
                 <li>
                   <button className="space-x-6 rounded-md border border-lightAsh p-2">

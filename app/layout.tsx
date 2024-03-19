@@ -1,6 +1,8 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import ClientComponentLayout from "@/components/ClientComponentLayout";
+import Footer from "@/components/Footer";
+import ShoppingCart from "@/components/ShoppingCart";
+import NavBar from "@/components/NavBar";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} mx-auto min-w-[300px] max-w-7xl`}>
-        <ClientComponentLayout>{children}</ClientComponentLayout>
+        <NavBar />
+        <main className="min-h-[65vh]">{children}</main>
+        <Footer />
       </body>
     </html>
   );

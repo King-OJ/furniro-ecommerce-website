@@ -1,7 +1,7 @@
 "use server";
 
 import { createCart, getCart } from "@/utils/db/cart";
-import { prisma } from "@/utils/db/prisma";
+import prisma from "@/utils/db/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function addToCart(productId: string) {

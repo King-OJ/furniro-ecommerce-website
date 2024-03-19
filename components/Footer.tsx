@@ -31,13 +31,13 @@ export default function Footer() {
           <a className="link-hover link">Privacy policy</a>
         </nav>
 
-        <form className="text-black">
+        <form className="w-full text-black">
           <h6 className="footer-title">Newsletter</h6>
-          <div className="flex items-center space-x-4">
+          <div className="flex w-full items-center space-x-8">
             <input
               type="text"
               placeholder="Enter your email address"
-              className="border-b-2 border-black pb-1 outline-none placeholder:text-xs placeholder:capitalize "
+              className="flex-1 border-b-2 border-black pb-1 outline-none placeholder:text-xs placeholder:capitalize "
             />
             <button
               type="submit"

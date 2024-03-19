@@ -3,6 +3,7 @@ import { useState } from "react";
 import ShoppingCart from "./ShoppingCart";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import ShoppingCartBtn from "./ShoppingCartBtn";
 
 export default function ClientComponentLayout({
   children,
@@ -13,13 +14,13 @@ export default function ClientComponentLayout({
 
   return (
     <>
-      <ShoppingCart
+      {/* <ShoppingCart
         isCartModalOpen={isCartModalOpen}
         closeCartModalOpen={() => setIsCartModalOpen(!isCartModalOpen)}
       />
-      <NavBar setIsCartModalOpen={() => setIsCartModalOpen(true)} />
+      <NavBar openCartModal={() => setIsCartModalOpen(true)} />
       <main className="min-h-[65vh]">{children}</main>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

@@ -24,6 +24,7 @@ export default function AddToCart({
         });
       }}
       className={className}
+      disabled={isPending}
     >
       {isPending ? (
         <span className="flex items-center space-x-1">

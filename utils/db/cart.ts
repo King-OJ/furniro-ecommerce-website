@@ -1,6 +1,6 @@
 "use server";
 import { cookies } from "next/headers";
-import { prisma } from "./prisma";
+import prisma from "./prisma";
 import { Cart, Prisma } from "@prisma/client";
 
 export type CartWithProducts = Prisma.CartGetPayload<{
@@ -35,6 +35,8 @@ export async function getCart(): Promise<ShoppingCart | null> {
         },
       })
     : null;
+  // console.log(localCartId);
+
   if (!cart) return null;
 
   return {

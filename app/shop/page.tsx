@@ -5,11 +5,13 @@ import { BsFillGridFill, BsPatchCheck } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdSplitscreen, MdSupportAgent } from "react-icons/md";
 import { HiOutlineTrophy } from "react-icons/hi2";
-import { allProducts } from "@/utils/actions";
+import { getProducts } from "@/utils/actions";
 import SingleProduct from "@/components/SingleProduct";
 import Link from "next/link";
 
-const page = () => {
+const page = async () => {
+  const allProducts = await getProducts();
+
   return (
     <>
       <section id="shopHeader" className="">
@@ -25,25 +27,27 @@ const page = () => {
             />
             <div className="absolute inset-0 bg-white bg-opacity-5">
               <div className="grid h-full place-content-center">
-                <h3 className="text-2xl font-semibold tracking-widest md:text-4xl">
-                  Shop
-                </h3>
+                <div className="flex flex-col items-center">
+                  <h3 className="text-2xl font-semibold tracking-widest md:text-4xl">
+                    Shop
+                  </h3>
 
-                <div className="mt-2 flex items-center justify-between text-xs md:text-sm">
-                  <Link href="/" className="font-semibold">
-                    Home
-                  </Link>
-                  <span className="">
-                    <FaChevronRight className="font-extrabold " />
-                  </span>
-                  <p className="">Shop</p>
+                  <div className="mt-2 flex items-center text-xs md:text-sm">
+                    <Link href="/" className="font-semibold">
+                      Home
+                    </Link>
+                    <span className="mx-2">
+                      <FaChevronRight className="font-extrabold " />
+                    </span>
+                    <p className="">Shop</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="-mt-1 bg-cream px-6 py-4 md:px-10 md:py-6">
-          <div className="flex flex-col items-center space-y-2 text-xs md:flex-row md:justify-between md:text-sm">
+          <div className="flex flex-col space-y-4 text-xs md:flex-row md:items-center md:justify-between md:space-y-0 md:text-sm">
             <div className="flex items-center space-x-2 text-sm text-black">
               <ul className="flex items-center space-x-6">
                 <li className="flex items-center">

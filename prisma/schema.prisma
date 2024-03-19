@@ -14,6 +14,7 @@ model Product {
   name        String
   title       String
   price       Int
+  // discountedPrice Int?       @default(0)
   discount    Int?       @default(0)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -37,7 +38,7 @@ model CartItem {
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   quantity  Int
   cartId    String  @db.ObjectId
-  cart      Cart    @relation(fields: [cartId], references: [id])
+  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
 
   @@map("cartitems")
 }

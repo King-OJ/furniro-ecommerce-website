@@ -2,7 +2,7 @@ import cloudinary from "@/utils/cloudinary";
 import AddDiscount from "@/components/AddDiscount";
 import DragAndDrop from "@/components/DragAndDrop";
 import FormSubmitBtn from "@/components/FormSubmitBtn";
-import { prisma } from "@/utils/db/prisma";
+import prisma from "@/utils/db/prisma";
 import { redirect } from "next/navigation";
 
 export const metadata = {

@@ -28,7 +28,7 @@ export default function SingleProduct({ product }: SingleProductProps) {
             <AddToCart
               addToCart={addToCartFromHome}
               productId={id}
-              className="btn rounded-none px-6 py-1 text-sm font-semibold text-primaryColor"
+              className="btn h-8 min-h-8 rounded-none px-3 py-[2px] text-sm font-semibold text-primaryColor"
             />
             <ul className="mt-3 flex items-center space-x-4">
               <li className="flex items-center space-x-1 text-xs text-white">

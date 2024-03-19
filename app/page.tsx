@@ -1,11 +1,11 @@
 import SingleProduct from "@/components/SingleProduct";
 import Image from "next/image";
 import { BsArrowRight, BsDash } from "react-icons/bs";
-import { getProducts } from "@/utils/actions";
+import { getHomeProducts } from "@/utils/actions";
 import Link from "next/link";
 
 export default async function HomeServerComponent() {
-  const products = await getProducts();
+  const products = await getHomeProducts();
   // console.log(products);
 
   return (
@@ -29,9 +29,12 @@ export default async function HomeServerComponent() {
               Aspernatur quaerat ad aperiam, necessitatibus consequuntur iure
               dolores aut quae doloribus repellendus!
             </p>
-            <button className="btn rounded-none bg-primaryColor px-6 text-white hover:bg-primaryColor hover:bg-opacity-80">
+            <Link
+              href="/shop"
+              className="btn rounded-none bg-primaryColor px-6 text-white hover:bg-primaryColor hover:bg-opacity-80"
+            >
               Get Started
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -46,34 +49,37 @@ export default async function HomeServerComponent() {
             </p>
           </div>
           {/* section content */}
-          <div className="grid h-full grid-flow-col grid-cols-3 gap-6">
-            <div className="group h-full text-center hover:cursor-pointer">
+          <div className="grid h-full gap-4 text-xl sm:grid-flow-col sm:grid-cols-3 sm:gap-6">
+            <div className="group flex flex-col items-center hover:cursor-pointer">
               <Image
                 src="/range1.png"
-                width={300}
-                height={300}
+                width={0}
+                height={0}
+                sizes="100vw"
                 alt="furniro logo"
-                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
+                className="h-auto w-full transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Dining</h6>
             </div>
-            <div className="group h-full text-center hover:cursor-pointer">
+            <div className="group flex h-full flex-col items-center hover:cursor-pointer">
               <Image
                 src="/range2.png"
-                width={300}
-                height={300}
+                width={0}
+                height={0}
+                sizes="100vw"
                 alt="furniro logo"
-                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
+                className="h-auto w-full transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Living</h6>
             </div>
-            <div className="group h-full text-center hover:cursor-pointer">
+            <div className="group flex h-full flex-col items-center hover:cursor-pointer">
               <Image
                 src="/range3.png"
-                width={300}
-                height={300}
+                width={0}
+                height={0}
+                sizes="100vw"
                 alt="furniro logo"
-                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
+                className="h-auto w-full transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Bedroom</h6>
             </div>
@@ -82,14 +88,14 @@ export default async function HomeServerComponent() {
       </section>
 
       <section id="products">
-        <div className="px-10 py-10 xl:px-0">
+        <div className="px-4 py-10 md:px-10 xl:px-0">
           {/* section header */}
           <div className="mb-10 text-center">
             <h2 className="text-2xl font-bold capitalize">our products</h2>
           </div>
 
           {/* section content */}
-          <ul className="grid gap-6 md:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
             {products.map((product, i) => {
               return <SingleProduct key={i} product={product} />;
             })}
@@ -108,12 +114,12 @@ export default async function HomeServerComponent() {
       </section>
 
       <section id="beautiful" className="bg-lighterCream">
-        <div className="flex items-center py-16 pl-10">
-          <div className="space-y-6">
-            <h2 className="mr-auto max-w-xs text-3xl font-bold">
+        <div className="flex flex-col items-center space-y-8 p-10 md:flex-row md:space-y-0 md:py-16 md:pl-10">
+          <div className="flex flex-col items-center space-y-6 md:items-start">
+            <h2 className="max-w-xs text-center text-3xl font-bold md:text-left">
               50+ Beautiful rooms inspiration
             </h2>
-            <p className="mr-auto max-w-xs text-sm text-lightGrey">
+            <p className="max-w-xs text-center text-sm text-lightGrey md:text-left">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
               est rerum, neque consequatur esse sit.
             </p>
@@ -123,13 +129,14 @@ export default async function HomeServerComponent() {
           </div>
 
           <div className="flex flex-1 space-x-4">
-            <div className="relative h-full">
+            <div className="relative h-[400px]">
               <Image
                 src="/innerpeace.png"
-                width={200}
-                height={200}
+                width={0}
+                height={0}
+                sizes="100vw"
                 alt="furniro logo"
-                className="aspect-auto h-[550px] w-auto"
+                className="h-full w-auto object-cover"
               />
               <div className="absolute bottom-4 left-4 flex items-end">
                 <div className="grid place-content-center bg-white bg-opacity-60 px-4  py-6 ">
@@ -152,36 +159,39 @@ export default async function HomeServerComponent() {
               <div className="carousel carousel-center max-w-lg space-x-4 bg-lighterCream">
                 <div
                   id="item1"
-                  className="carousel-item max-h-[460px] max-w-sm"
+                  className="carousel-item max-h-[360px] max-w-sm"
                 >
                   <Image
                     src="/sliderImg.png"
-                    width={300}
-                    height={300}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                     alt="furniro logo"
                     className="aspect-auto h-full w-full"
                   />
                 </div>
                 <div
                   id="item2"
-                  className="carousel-item max-h-[460px] max-w-sm"
+                  className="carousel-item max-h-[360px] max-w-sm"
                 >
                   <Image
                     src="/sliderImg.png"
-                    width={300}
-                    height={300}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                     alt="furniro logo"
                     className="aspect-auto h-full w-full"
                   />
                 </div>
                 <div
                   id="item3"
-                  className="carousel-item max-h-[460px] max-w-sm"
+                  className="carousel-item max-h-[360px] max-w-sm"
                 >
                   <Image
                     src="/sliderImg.png"
-                    width={300}
-                    height={300}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
                     alt="furniro logo"
                     className="aspect-auto h-full w-full"
                   />

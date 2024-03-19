@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BsPersonGear, BsSearch, BsHeart, BsCart } from "react-icons/bs";
+import { BsPersonGear, BsHeart, BsCart } from "react-icons/bs";
 import { HiMenuAlt3 } from "react-icons/hi";
+import SearchBox from "./SearchBox";
+import ShoppingCartBtn from "./ShoppingCartBtn";
+import { redirect } from "next/navigation";
+import { getCart } from "@/utils/db/cart";
 
 const links = [
   {
@@ -22,11 +26,21 @@ const links = [
   },
 ];
 
-interface NavBarProps {
-  setIsCartModalOpen: () => void;
+async function searchProduct(formData: FormData) {
+  "use server";
+  const searchQuery = formData.get("searchQuery");
+  if (searchQuery) {
+    redirect("/search?query=" + searchQuery);
+  }
 }
 
-const NavBar = ({ setIsCartModalOpen }: NavBarProps) => {
+interface NavBarProps {
+  openCartModal: () => void;
+}
+
+const NavBar = async () => {
+  const cart = await getCart();
+
   return (
     <nav className="navbar justify-between bg-base-100 shadow-lg">
       <Link href="/" className="btn btn-ghost text-xl">
@@ -48,36 +62,33 @@ const NavBar = ({ setIsCartModalOpen }: NavBarProps) => {
       <ul className="menu menu-horizontal hidden md:flex">
         {links.map((link, i) => {
           return (
-            <li key={i} className="capitalize">
-              <Link href={link.destination}>{link.title}</Link>
+            <li key={i} className="capitalize ">
+              <Link className="hover:bg-lighterCream" href={link.destination}>
+                {link.title}
+              </Link>
             </li>
           );
         })}
       </ul>
 
-      <ul className=" hidden items-center space-x-3 md:flex">
+      <ul className=" hidden items-center space-x-1 md:flex">
         <li className="">
-          <button className="btn btn-ghost text-lg">
+          <button className="btn btn-circle btn-ghost text-lg hover:bg-lighterCream">
             <BsPersonGear />
           </button>
         </li>
-        <li className="">
-          <button className="btn btn-ghost text-lg">
-            <BsSearch />
-          </button>
+        <li>
+          <form action={searchProduct} className="flex items-center">
+            <SearchBox />
+          </form>
         </li>
         <li className="">
-          <button className="btn btn-ghost text-lg">
+          <button className="btn btn-circle btn-ghost text-lg hover:bg-lighterCream">
             <BsHeart />
           </button>
         </li>
         <li className="">
-          <button
-            className="btn btn-ghost text-lg"
-            onClick={setIsCartModalOpen}
-          >
-            <BsCart />
-          </button>
+          <ShoppingCartBtn cart={cart} />
         </li>
       </ul>
     </nav>
