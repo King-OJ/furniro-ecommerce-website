@@ -25,7 +25,11 @@ export default function RootLayout({
         <Toaster
           position="top-center"
           toastOptions={{
-            style: { border: "2px solid #B88E2F", color: "#B88E2F" },
+            style: {
+              border: "2px solid #B88E2F",
+              color: "#B88E2F",
+              textAlign: "center",
+            },
             className: "my-toast",
           }}
         />

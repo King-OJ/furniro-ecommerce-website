@@ -6,9 +6,13 @@ import { ShoppingCart as ShoppingCartType } from "@/utils/db/cart";
 
 interface ShoppingCartBtnProps {
   cart: ShoppingCartType | null;
+  removeFromCart: (productId: string, path: string) => Promise<void>;
 }
 
-export default function ShoppingCartBtn({ cart }: ShoppingCartBtnProps) {
+export default function ShoppingCartBtn({
+  cart,
+  removeFromCart,
+}: ShoppingCartBtnProps) {
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
 
   return (
@@ -25,6 +29,7 @@ export default function ShoppingCartBtn({ cart }: ShoppingCartBtnProps) {
         </span>
       </button>
       <ShoppingCart
+        removeFromCart={removeFromCart}
         cart={cart}
         isCartModalOpen={isCartModalOpen}
         closeCartModalOpen={() => setIsCartModalOpen(false)}

@@ -15,6 +15,7 @@ import { Metadata } from "next";
 import { cache } from "react";
 import AddToCart from "../../../components/AddToCart";
 import { addToCart } from "./actions";
+import ProductQuantity from "@/components/ProductQuantity";
 
 interface ProductDetailsPageProps {
   params: {
@@ -199,11 +200,7 @@ export default async function ProductDetailsPage({
 
               <ul className="mt-4 flex space-x-2 text-xs  text-black">
                 <li>
-                  <button className="space-x-6 rounded-md border border-lightAsh p-2">
-                    <span className="text-lightAsh">-</span>
-                    <span>1</span>
-                    <span>+</span>
-                  </button>
+                  <ProductQuantity />
                 </li>
                 <li>
                   <AddToCart

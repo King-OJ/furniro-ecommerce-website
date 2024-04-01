@@ -13,3 +13,7 @@ h5 {
 .btn-primary {
   @apply text-white;
 }
+
+.btn {
+  @apply h-[2.5rem] min-h-[2.5rem];
+}

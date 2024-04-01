@@ -7,17 +7,20 @@ import { useEffect, useState } from "react";
 import { BsCartX } from "react-icons/bs";
 import { IoCloseCircle } from "react-icons/io5";
 import ImgContainer from "./ImgContainer";
+import DeleteFromCartBtn from "./DeleteFromCartBtn";
 
 interface ShoppingCartProps {
   isCartModalOpen: boolean;
   closeCartModalOpen: () => void;
   cart: ShoppingCartType | null;
+  removeFromCart: (productId: string, path: string) => Promise<void>;
 }
 
 export default function ShoppingCart({
   isCartModalOpen,
   closeCartModalOpen,
   cart,
+  removeFromCart,
 }: ShoppingCartProps) {
   const [showModal, setShowModal] = useState(false);
 
@@ -38,7 +41,7 @@ export default function ShoppingCart({
 
   return (
     <div
-      onClick={closeModal}
+      // onClick={closeModal}
       className={
         isCartModalOpen
           ? "fixed bottom-0 left-0 right-0 top-0 z-30 bg-black bg-opacity-30 transition-all duration-200"
@@ -71,11 +74,11 @@ export default function ShoppingCart({
                   <BsCartX fill="#898989" />
                 </button>
               </div>
-              {cart ? (
+              {cart?.items.length > 0 ? (
                 <ul className="my-4 w-full space-y-3">
                   {cart?.items.map((item) => {
                     const { product, quantity } = item;
-                    const { name, price, imageUrl } = product;
+                    const { name, price, imageUrl, id } = product;
 
                     return (
                       <li
@@ -83,9 +86,20 @@ export default function ShoppingCart({
                         className="flex items-center justify-between space-x-1"
                       >
                         <div className="flex items-center space-x-2">
-                          <ImgContainer imageUrl={imageUrl} />
+                          <ImgContainer product={product} />
                           <div className="space-y-2 text-xs">
-                            <h6 className="font-semibold">{name}</h6>
+                            <Link
+                              href={`/shop/${id}`}
+                              className="font-semibold"
+                              onClick={() => {
+                                setShowModal(false);
+                                setTimeout(() => {
+                                  closeCartModalOpen();
+                                }, 500);
+                              }}
+                            >
+                              {name}
+                            </Link>
                             <div className="flex items-center space-x-1">
                               <p>{quantity}</p>
                               <span>X</span>
@@ -96,15 +110,17 @@ export default function ShoppingCart({
                           </div>
                         </div>
 
-                        <IoCloseCircle fill="#898989" />
+                        <DeleteFromCartBtn
+                          removeFromCart={removeFromCart}
+                          Icon={IoCloseCircle}
+                          productId={id}
+                        />
                       </li>
                     );
                   })}
                 </ul>
               ) : (
-                <p className="mt-4 text-xs md:text-sm">
-                  You have not added an item to your cart
-                </p>
+                <p className="mt-4 text-xs md:text-sm">You cart is empty</p>
               )}
             </div>
 
@@ -127,12 +143,12 @@ export default function ShoppingCart({
                     }}
                     href="/cart"
                     className={
-                      cart === null
+                      cart?.items.length < 1
                         ? "btn btn-disabled btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
-                        : "btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                        : "btn btn-outline rounded-full px-3 text-xs"
                     }
                     style={{
-                      pointerEvents: cart === null ? "none" : "auto",
+                      pointerEvents: cart?.items.length < 1 ? "none" : "auto",
                     }}
                   >
                     View cart
@@ -140,16 +156,16 @@ export default function ShoppingCart({
                 </li>
                 <li>
                   <button
-                    disabled={cart === null}
-                    className="btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                    disabled={cart?.items.length < 1}
+                    className="btn btn-outline  rounded-full px-3 text-xs"
                   >
                     Checkout
                   </button>
                 </li>
                 <li>
                   <button
-                    disabled={cart === null}
-                    className="btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                    disabled={cart?.items.length < 1}
+                    className="btn btn-outline  rounded-full px-3 text-xs"
                   >
                     Comparison
                   </button>

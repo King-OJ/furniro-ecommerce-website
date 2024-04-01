@@ -31,19 +31,3 @@ export async function addToCart(productId: string, path: string) {
   }
   revalidatePath(path, "page");
 }
-
-export async function removeFromCart(productId: string) {
-  console.log(productId);
-
-  const cart = await getCart();
-
-  if (cart) {
-    await prisma.cartItem.delete({
-      where: {
-        id: productId,
-      },
-    });
-  }
-
-  revalidatePath("/cart", "page");
-}

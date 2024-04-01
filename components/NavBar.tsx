@@ -6,6 +6,7 @@ import SearchBox from "./SearchBox";
 import ShoppingCartBtn from "./ShoppingCartBtn";
 import { redirect } from "next/navigation";
 import { getCart } from "@/utils/db/cart";
+import { removeFromCart } from "@/utils/actions";
 
 const links = [
   {
@@ -32,10 +33,6 @@ async function searchProduct(formData: FormData) {
   if (searchQuery) {
     redirect("/search?query=" + searchQuery);
   }
-}
-
-interface NavBarProps {
-  openCartModal: () => void;
 }
 
 const NavBar = async () => {
@@ -89,7 +86,7 @@ const NavBar = async () => {
           </button>
         </li>
         <li className="">
-          <ShoppingCartBtn cart={cart} />
+          <ShoppingCartBtn cart={cart} removeFromCart={removeFromCart} />
         </li>
       </ul>
     </nav>

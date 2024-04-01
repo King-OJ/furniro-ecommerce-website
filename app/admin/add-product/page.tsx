@@ -1,69 +1,12 @@
-import cloudinary from "@/utils/cloudinary";
 import AddDiscount from "@/components/AddDiscount";
 import DragAndDrop from "@/components/DragAndDrop";
 import FormSubmitBtn from "@/components/FormSubmitBtn";
-import prisma from "@/utils/db/prisma";
-import { redirect } from "next/navigation";
+import { addProduct } from "@/utils/actions";
 
 export const metadata = {
   title: "Add Product - Furniro",
   description: "Add a product",
 };
-
-type ImageResource = {
-  url?: String;
-  signature?: String;
-  public_id?: String;
-};
-
-async function addProduct(formData: FormData) {
-  "use server";
-
-  const name = formData.get("name")?.toString();
-  const title = formData.get("title")?.toString();
-  const description = formData.get("description")?.toString();
-  const discount = Number(formData.get("discount") || 0);
-  const file = formData.get("image") as File;
-  const price = Number(formData.get("price") || 0);
-  const discountedPrice = price - (discount / 100) * price;
-
-  const arrayBuffer = await file.arrayBuffer();
-  const buffer = new Uint8Array(arrayBuffer);
-
-  const uploadedImgResource: ImageResource = await new Promise(
-    (resolve, reject) => {
-      cloudinary.uploader
-        .upload_stream({}, function (error, result) {
-          if (error) {
-            reject(error);
-            return;
-          }
-
-          resolve(result);
-        })
-        .end(buffer);
-    },
-  );
-
-  if (!name || !description || !price || !title || !uploadedImgResource) {
-    throw Error("Missing required fields");
-  }
-  const { url } = uploadedImgResource;
-
-  await prisma.product.create({
-    data: {
-      name,
-      title,
-      description,
-      discount,
-      imageUrl: url.toString(),
-      price,
-      discountedPrice,
-    },
-  });
-
-  // redirect("/");
-}
 
 export default function page() {
   return (
