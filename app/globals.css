@@ -9,3 +9,7 @@ h4,
 h5 {
   @apply text-lg font-semibold capitalize tracking-wide md:text-xl;
 }
+
+.btn-primary {
+  @apply text-white;
+}

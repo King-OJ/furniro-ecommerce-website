@@ -1,11 +1,11 @@
-
+import SectionHeader from "@/components/SectionHeader";
 
 const page = () => {
   return (
-    <div className="min-h-[65vh]">
-        <h1 className="text-3xl">About Page</h1>
-      </div>
-  )
-}
+    <section>
+      <SectionHeader title="About" />
+    </section>
+  );
+};
 
-export default page
+export default page;

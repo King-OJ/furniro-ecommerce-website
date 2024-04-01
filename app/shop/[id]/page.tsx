@@ -120,14 +120,13 @@ export default async function ProductDetailsPage({
                   />
                 </li>
               </ul>
-              <div className="grid h-80 flex-1 place-content-center rounded-md border-2 border-cream">
+              <div className="grid h-80 w-80 place-content-center rounded-md bg-cream">
                 <Image
                   src={imageUrl}
                   alt="furniture img"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="aspect-auto h-auto w-auto object-cover"
+                  width={300}
+                  height={300}
+                  className="aspect-auto h-full w-full object-cover"
                 />
               </div>
             </div>
@@ -208,6 +207,7 @@ export default async function ProductDetailsPage({
                 </li>
                 <li>
                   <AddToCart
+                    path="/shop/[id]"
                     addToCart={addToCart}
                     productId={id}
                     className="rounded-md border border-black px-3 py-2 md:px-6"
@@ -334,7 +334,14 @@ export default async function ProductDetailsPage({
           <h5 className="text-center">Related Products</h5>
           <ul className="my-6 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
             {relatedProducts.map((product, i) => {
-              return <SingleProduct key={i} product={product} />;
+              return (
+                <SingleProduct
+                  path="/shop/[id]"
+                  addToCart={addToCart}
+                  key={i}
+                  product={product}
+                />
+              );
             })}
           </ul>
           {/* show more button */}

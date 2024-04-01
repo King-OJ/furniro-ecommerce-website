@@ -4,16 +4,28 @@ import Link from "next/link";
 import { Product } from "@prisma/client";
 import { formatPrice } from "@/utils/formatPrice";
 import AddToCart from "./AddToCart";
-import { addToCart, addToCartFromHome } from "@/app/shop/[id]/actions";
 
 interface SingleProductProps {
   product: Product;
+  addToCart: (productId: string, path: string) => Promise<void>;
+  path: string;
 }
 
-export default function SingleProduct({ product }: SingleProductProps) {
-  const { name, title, price, imageUrl, discount, id, createdAt } = product;
-
-  const newPrice = price - (discount / 100) * price;
+export default function SingleProduct({
+  product,
+  addToCart,
+  path,
+}: SingleProductProps) {
+  const {
+    name,
+    title,
+    price,
+    imageUrl,
+    discount,
+    id,
+    createdAt,
+    discountedPrice,
+  } = product;
 
   //if the product was added less than 7 days ago then its new
   const isNewProduct =
@@ -26,7 +38,8 @@ export default function SingleProduct({ product }: SingleProductProps) {
         <div className="absolute bottom-0 left-0 right-0 h-0 w-full overflow-hidden bg-black bg-opacity-40 transition-all duration-200 group-hover:z-10 group-hover:h-full">
           <div className="grid h-full w-full place-content-center">
             <AddToCart
-              addToCart={addToCartFromHome}
+              path={path}
+              addToCart={addToCart}
               productId={id}
               className="btn h-8 min-h-8 rounded-none px-3 py-[2px] text-sm font-semibold text-primaryColor"
             />
@@ -74,7 +87,9 @@ export default function SingleProduct({ product }: SingleProductProps) {
           <p className="text-xs text-thickAsh">{title}</p>
           {discount > 0 ? (
             <div className="flex items-center justify-between">
-              <p className="text-sm font-bold">{formatPrice(newPrice)}</p>
+              <p className="text-sm font-bold">
+                {formatPrice(discountedPrice || price)}
+              </p>
 
               <p className="text-xs font-bold text-lightAsh line-through">
                 {formatPrice(price)}

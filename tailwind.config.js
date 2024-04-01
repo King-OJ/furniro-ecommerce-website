@@ -19,7 +19,7 @@ module.exports = {
       black: "#000000",
       lightGrey: "#666666",
       ashColor: "#F4F5F7",
-      lightAsh: "#B0B0B0",
+      lightAsh: "#9F9F9F",
       thickAsh: "#898989",
     },
     extend: {},

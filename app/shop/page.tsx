@@ -1,51 +1,19 @@
-import Image from "next/image";
 import { GiSettingsKnobs } from "react-icons/gi";
-import { FaChevronRight } from "react-icons/fa";
-import { BsFillGridFill, BsPatchCheck } from "react-icons/bs";
-import { TbTruckDelivery } from "react-icons/tb";
-import { MdSplitscreen, MdSupportAgent } from "react-icons/md";
-import { HiOutlineTrophy } from "react-icons/hi2";
+import { BsFillGridFill } from "react-icons/bs";
+import { MdSplitscreen } from "react-icons/md";
 import { getProducts } from "@/utils/actions";
 import SingleProduct from "@/components/SingleProduct";
-import Link from "next/link";
+import SectionHeader from "@/components/SectionHeader";
+import FeaturesSection from "@/components/FeaturesSection";
+import { addToCart } from "./[id]/actions";
 
 const page = async () => {
   const allProducts = await getProducts();
 
   return (
     <>
-      <section id="shopHeader" className="">
-        <div className="min-h-[10vh] overflow-hidden md:min-h-[20vh]">
-          <div className="relative w-full">
-            <Image
-              src="/shopHeaderImg.png"
-              width={1000}
-              height={1000}
-              alt="furniro logo"
-              className="aspect-auto h-full w-full"
-              priority
-            />
-            <div className="absolute inset-0 bg-white bg-opacity-5">
-              <div className="grid h-full place-content-center">
-                <div className="flex flex-col items-center">
-                  <h3 className="text-2xl font-semibold tracking-widest md:text-4xl">
-                    Shop
-                  </h3>
-
-                  <div className="mt-2 flex items-center text-xs md:text-sm">
-                    <Link href="/" className="font-semibold">
-                      Home
-                    </Link>
-                    <span className="mx-2">
-                      <FaChevronRight className="font-extrabold " />
-                    </span>
-                    <p className="">Shop</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <section>
+        <SectionHeader title="Shop" />
         <div className="-mt-1 bg-cream px-6 py-4 md:px-10 md:py-6">
           <div className="flex flex-col space-y-4 text-xs md:flex-row md:items-center md:justify-between md:space-y-0 md:text-sm">
             <div className="flex items-center space-x-2 text-sm text-black">
@@ -91,7 +59,14 @@ const page = async () => {
         <div className="px-4 py-10 md:px-10 md:py-16">
           <ul className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
             {allProducts.map((product, i) => {
-              return <SingleProduct key={i} product={product} />;
+              return (
+                <SingleProduct
+                  addToCart={addToCart}
+                  path="/shop"
+                  key={i}
+                  product={product}
+                />
+              );
             })}
           </ul>
           <div className="mt-10 flex justify-center">
@@ -120,45 +95,7 @@ const page = async () => {
           </div>
         </div>
       </section>
-
-      <section className="bg-cream">
-        <div className="px-6 py-10 md:py-12">
-          <ul className="grid grid-cols-2 gap-4 text-xs text-black md:grid-cols-4 md:text-sm">
-            <li className="flex items-center space-x-2">
-              <HiOutlineTrophy size={40} />
-              <div className="space-y-1">
-                <h6 className="font-semibold text-black">High Quality</h6>
-                <p className="text-xs text-thickAsh">
-                  Crafted from top materials
-                </p>
-              </div>
-            </li>
-            <li className="flex items-center space-x-2">
-              <BsPatchCheck size={40} />
-              <div className="space-y-1">
-                <h6 className="font-semibold text-black">
-                  Warranty Protection
-                </h6>
-                <p className="text-xs text-thickAsh">Over 2 years</p>
-              </div>
-            </li>
-            <li className="flex items-center space-x-2">
-              <TbTruckDelivery size={40} />
-              <div className="space-y-1">
-                <h6 className="font-semibold text-black">Free Shipping</h6>
-                <p className="text-xs text-thickAsh">Order over $150</p>
-              </div>
-            </li>
-            <li className="flex items-center space-x-2">
-              <MdSupportAgent size={40} />
-              <div className="space-y-1">
-                <h6 className="font-semibold text-black">24/7 Support</h6>
-                <p className="text-xs text-thickAsh">Dedicated support</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <FeaturesSection />
     </>
   );
 };

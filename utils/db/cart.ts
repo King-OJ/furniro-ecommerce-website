@@ -1,7 +1,7 @@
 "use server";
 import { cookies } from "next/headers";
 import prisma from "./prisma";
-import { Cart, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 export type CartWithProducts = Prisma.CartGetPayload<{
   include: {
@@ -10,6 +10,12 @@ export type CartWithProducts = Prisma.CartGetPayload<{
         product: true;
       };
     };
+  };
+}>;
+
+export type CartItemWithProduct = Prisma.CartItemGetPayload<{
+  include: {
+    product: true;
   };
 }>;
 
@@ -41,6 +47,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
 
   return {
     ...cart,
+    items: cart.items.reverse(),
     totalItems: cart.items.reduce((acc, item) => {
       return acc + item.quantity;
     }, 0),

@@ -2,11 +2,11 @@
 
 import { ShoppingCart as ShoppingCartType } from "@/utils/db/cart";
 import { formatPrice } from "@/utils/formatPrice";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsCartX } from "react-icons/bs";
 import { IoCloseCircle } from "react-icons/io5";
+import ImgContainer from "./ImgContainer";
 
 interface ShoppingCartProps {
   isCartModalOpen: boolean;
@@ -71,44 +71,41 @@ export default function ShoppingCart({
                   <BsCartX fill="#898989" />
                 </button>
               </div>
-              <ul className="mt-4 w-full space-y-3">
-                {cart?.items.map((item) => {
-                  const { product, quantity } = item;
-                  const { name, price, imageUrl } = product;
+              {cart ? (
+                <ul className="my-4 w-full space-y-3">
+                  {cart?.items.map((item) => {
+                    const { product, quantity } = item;
+                    const { name, price, imageUrl } = product;
 
-                  return (
-                    <li
-                      key={item.id}
-                      className="flex items-center justify-between space-x-1"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <div className="grid h-[50px] w-[50px] place-content-center overflow-hidden rounded-md ">
-                          <Image
-                            alt="furniro"
-                            src={imageUrl}
-                            height={0}
-                            width={0}
-                            sizes="100vw"
-                            className="h-auto w-auto object-cover"
-                          />
-                        </div>
-                        <div className="space-y-2 text-xs">
-                          <h6 className="font-semibold">{name}</h6>
-                          <div className="flex items-center space-x-1">
-                            <p>{quantity}</p>
-                            <span>X</span>
-                            <p className="text-primaryColor">
-                              {formatPrice(price || 0)}
-                            </p>
+                    return (
+                      <li
+                        key={item.id}
+                        className="flex items-center justify-between space-x-1"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <ImgContainer imageUrl={imageUrl} />
+                          <div className="space-y-2 text-xs">
+                            <h6 className="font-semibold">{name}</h6>
+                            <div className="flex items-center space-x-1">
+                              <p>{quantity}</p>
+                              <span>X</span>
+                              <p className="text-primaryColor">
+                                {formatPrice(price || 0)}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <IoCloseCircle fill="#898989" />
-                    </li>
-                  );
-                })}
-              </ul>
+                        <IoCloseCircle fill="#898989" />
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : (
+                <p className="mt-4 text-xs md:text-sm">
+                  You have not added an item to your cart
+                </p>
+              )}
             </div>
 
             <div>
@@ -129,18 +126,31 @@ export default function ShoppingCart({
                       }, 500);
                     }}
                     href="/cart"
-                    className="btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                    className={
+                      cart === null
+                        ? "btn btn-disabled btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                        : "btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                    }
+                    style={{
+                      pointerEvents: cart === null ? "none" : "auto",
+                    }}
                   >
                     View cart
                   </Link>
                 </li>
                 <li>
-                  <button className="btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs">
+                  <button
+                    disabled={cart === null}
+                    className="btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                  >
                     Checkout
                   </button>
                 </li>
                 <li>
-                  <button className="btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs">
+                  <button
+                    disabled={cart === null}
+                    className="btn btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                  >
                     Comparison
                   </button>
                 </li>

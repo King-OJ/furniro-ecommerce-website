@@ -4,7 +4,7 @@ import { createCart, getCart } from "@/utils/db/cart";
 import prisma from "@/utils/db/prisma";
 import { revalidatePath } from "next/cache";
 
-export async function addToCart(productId: string) {
+export async function addToCart(productId: string, path: string) {
   const cart = (await getCart()) ?? (await createCart());
 
   const itemIsAlreadyInCart = cart.items.find(
@@ -29,35 +29,21 @@ export async function addToCart(productId: string) {
       },
     });
   }
-
-  revalidatePath("/shop/[id]", "page");
+  revalidatePath(path, "page");
 }
 
-export async function addToCartFromHome(productId: string) {
-  const cart = (await getCart()) ?? (await createCart());
+export async function removeFromCart(productId: string) {
+  console.log(productId);
 
-  const itemIsAlreadyInCart = cart.items.find(
-    (item) => item.productId === productId,
-  );
+  const cart = await getCart();
 
-  if (itemIsAlreadyInCart) {
-    await prisma.cartItem.update({
+  if (cart) {
+    await prisma.cartItem.delete({
       where: {
-        id: itemIsAlreadyInCart.id,
-      },
-      data: {
-        quantity: { increment: 1 },
-      },
-    });
-  } else {
-    await prisma.cartItem.create({
-      data: {
-        cartId: cart.id,
-        productId,
-        quantity: 1,
+        id: productId,
       },
     });
   }
 
-  revalidatePath("/", "page");
+  revalidatePath("/cart", "page");
 }

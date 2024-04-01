@@ -25,6 +25,7 @@ async function addProduct(formData: FormData) {
   const discount = Number(formData.get("discount") || 0);
   const file = formData.get("image") as File;
   const price = Number(formData.get("price") || 0);
+  const discountedPrice = price - (discount / 100) * price;
 
   const arrayBuffer = await file.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
@@ -57,6 +58,7 @@ async function addProduct(formData: FormData) {
       discount,
       imageUrl: url.toString(),
       price,
+      discountedPrice,
     },
   });
 

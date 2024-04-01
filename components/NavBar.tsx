@@ -46,8 +46,9 @@ const NavBar = async () => {
       <Link href="/" className="btn btn-ghost text-xl">
         <Image
           src="/furniroLogo.png"
-          width={100}
-          height={100}
+          width={0}
+          height={0}
+          sizes="100vw"
           alt="furniro logo"
           className="h-auto w-auto"
           priority

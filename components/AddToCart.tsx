@@ -1,26 +1,27 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
+import { toast } from "sonner";
 
 export default function AddToCart({
   productId,
   className,
   addToCart,
+  path,
 }: {
   productId: string;
   className: string;
-  addToCart: (productId: string) => Promise<void>;
+  addToCart: (productId: string, path: string) => Promise<void>;
+  path: string;
 }) {
   const [isPending, startTransition] = useTransition();
-  const [isItemAdded, setIsItemAdded] = useState(false);
 
   return (
     <button
       onClick={() => {
-        setIsItemAdded(false);
         startTransition(async () => {
-          await addToCart(productId);
-          setIsItemAdded(true);
+          await addToCart(productId, path);
+          toast.success("Item has been added to cart!");
         });
       }}
       className={className}

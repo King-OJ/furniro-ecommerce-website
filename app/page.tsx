@@ -3,10 +3,10 @@ import Image from "next/image";
 import { BsArrowRight, BsDash } from "react-icons/bs";
 import { getHomeProducts } from "@/utils/actions";
 import Link from "next/link";
+import { addToCart } from "./shop/[id]/actions";
 
 export default async function HomeServerComponent() {
   const products = await getHomeProducts();
-  // console.log(products);
 
   return (
     <>
@@ -97,7 +97,14 @@ export default async function HomeServerComponent() {
           {/* section content */}
           <ul className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
             {products.map((product, i) => {
-              return <SingleProduct key={i} product={product} />;
+              return (
+                <SingleProduct
+                  addToCart={addToCart}
+                  path="/"
+                  key={i}
+                  product={product}
+                />
+              );
             })}
           </ul>
 
