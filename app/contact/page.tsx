@@ -6,7 +6,7 @@ import { MdLocationPin, MdLockClock, MdPhone } from "react-icons/md";
 const page = () => {
   return (
     <section>
-      <SectionHeader title="Contact" />
+      <SectionHeader>Contact</SectionHeader>
       <div className="space-y-14 p-6 md:p-10">
         <div className="mx-auto mt-6 max-w-xl space-y-2 text-center">
           <h5 className="text-2xl font-bold">Get in Touch With Us</h5>

@@ -13,7 +13,7 @@ const page = async () => {
   return (
     <>
       <section>
-        <SectionHeader title="Shop" />
+        <SectionHeader>Shop</SectionHeader>
         <div className="-mt-1 bg-cream px-6 py-4 md:px-10 md:py-6">
           <div className="flex flex-col space-y-4 text-xs md:flex-row md:items-center md:justify-between md:space-y-0 md:text-sm">
             <div className="flex items-center space-x-2 text-sm text-black">

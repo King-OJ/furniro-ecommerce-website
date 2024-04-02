@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaChevronRight } from "react-icons/fa";
 
-export default function SectionHeader({ title }: { title: string }) {
+export default function SectionHeader({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div id="header" className="min-h-[10vh] overflow-hidden md:min-h-[20vh]">
       <div className="relative w-full">
@@ -17,7 +21,7 @@ export default function SectionHeader({ title }: { title: string }) {
         />
         <div className="absolute inset-0 bg-white bg-opacity-5">
           <div className="grid h-full place-content-center ">
-            <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col items-center space-y-[2px] md:space-y-2">
               <Image
                 src="/furniroLogo.png"
                 width={0}
@@ -28,18 +32,18 @@ export default function SectionHeader({ title }: { title: string }) {
                 priority
               />
 
-              <h3 className="text-2xl font-semibold tracking-widest md:text-3xl">
-                {title}
+              <h3 className="text-xl font-semibold tracking-widest md:text-3xl">
+                {children}
               </h3>
 
-              <div className="flex items-center text-xs md:text-sm">
+              <div className="flex items-center text-xs ">
                 <Link href="/" className="font-semibold">
                   Home
                 </Link>
                 <span className="mx-2">
                   <FaChevronRight className="font-extrabold " />
                 </span>
-                <p>{title}</p>
+                <p>{children}</p>
               </div>
             </div>
           </div>

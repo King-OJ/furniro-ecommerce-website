@@ -2,9 +2,9 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className=" border-t-2 border-ashColor p-10 pb-5">
+    <footer className=" border-t-2 border-ashColor p-6 pb-5 md:p-10">
       <div className="footer">
-        <aside>
+        <aside className="md:col-start-1">
           <Image
             src="/furniroLogo.png"
             width={100}
@@ -13,25 +13,25 @@ export default function Footer() {
             className="h-auto w-auto"
             priority
           />
-          <p className="max-w-[250px] text-thickAsh">
+          <p className="max-w-[250px] text-xs leading-6 text-thickAsh md:text-sm ">
             400 University Drive Suite 200 Coral Gables, FL 33134 USA
           </p>
         </aside>
-        <nav className="text-black">
+        <nav className="col-start-1 text-xs text-black md:col-start-2 md:text-sm">
           <h6 className="footer-title">Links</h6>
           <a className="link-hover link">Home</a>
           <a className="link-hover link">Shop</a>
           <a className="link-hover link">About</a>
           <a className="link-hover link">Contact</a>
         </nav>
-        <nav className="text-black">
+        <nav className="col-start-2 text-xs text-black md:col-start-3 md:text-sm">
           <h6 className="footer-title">Help</h6>
           <a className="link-hover link">Payment Options</a>
           <a className="link-hover link">Returns</a>
           <a className="link-hover link">Privacy policy</a>
         </nav>
 
-        <form className="w-full text-black">
+        <form className="col-start-1 col-end-3 w-full text-xs text-black md:col-start-4 md:col-end-5 md:text-sm">
           <h6 className="footer-title">Newsletter</h6>
           <div className="flex w-full items-center space-x-8">
             <input

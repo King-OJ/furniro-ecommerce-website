@@ -17,7 +17,7 @@ export default async function page() {
 
   return (
     <section>
-      <SectionHeader title="Cart" />
+      <SectionHeader>Cart</SectionHeader>
 
       {cart.items.length > 0 ? (
         <div className="m-6 grid grid-flow-col grid-cols-4 gap-4 md:m-10">
@@ -67,7 +67,7 @@ export default async function page() {
           </div>
         </div>
       ) : (
-        <div className="m-6 flex min-h-[22vh] w-full items-center justify-center space-x-6">
+        <div className="m-6 flex min-h-[25vh] w-full items-center justify-center space-x-6">
           <h5>Your cart is empty!</h5>
           <Link href="/shop" className="btn btn-primary">
             Fill it

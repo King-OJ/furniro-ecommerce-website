@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import FormRow from "./FormRow";
 
 export default function AddDiscount() {
   const [showDiscountInput, setShowDiscountInput] = useState(true);
@@ -19,11 +20,12 @@ export default function AddDiscount() {
       </div>
 
       {showDiscountInput && (
-        <input
+        <FormRow
+          title="product discount"
           required
           name="discount"
           type="number"
-          placeholder="Enter Discount"
+          placeholder="Enter discount"
           className="input input-bordered w-full"
         />
       )}

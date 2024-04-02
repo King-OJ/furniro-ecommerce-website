@@ -342,10 +342,10 @@ export default async function ProductDetailsPage({
             })}
           </ul>
           {/* show more button */}
-          <div className="flex justify-center">
+          <div className="mt-10 flex justify-center">
             <Link
               href="/shop"
-              className="btn btn-outline btn-primary h-10 min-h-10 rounded-none px-16 text-xs  capitalize md:h-12 md:text-sm"
+              className="btn btn-outline rounded-none border-primaryColor px-16 text-xs capitalize text-primaryColor transition-all duration-150 hover:border-primaryColor hover:bg-primaryColor hover:text-white md:h-12 md:text-sm"
             >
               show more
             </Link>

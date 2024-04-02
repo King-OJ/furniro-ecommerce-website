@@ -19,7 +19,7 @@ export default function FormSubmitBtn({
     <button
       {...props}
       type="submit"
-      className={`btn btn-primary ${className}`}
+      className={`btn px-8 ${className}`}
       disabled={pending}
     >
       {pending && <span className="loading loading-dots loading-xs" />}

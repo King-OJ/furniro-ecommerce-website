@@ -56,7 +56,7 @@ export default function ShoppingCart({
               : "absolute right-0 top-full h-0 transition-all duration-200"
           }
         >
-          <div className="flex min-h-96 min-w-80 flex-col justify-between bg-white py-4">
+          <div className="flex min-h-64 min-w-80 flex-col justify-between bg-white py-4">
             <div className="px-4">
               <div className="flex items-start justify-between">
                 <h5 className="flex-1 border-b border-lightAsh pb-4 font-semibold">
@@ -78,7 +78,7 @@ export default function ShoppingCart({
                 <ul className="my-4 w-full space-y-3">
                   {cart?.items.map((item) => {
                     const { product, quantity } = item;
-                    const { name, price, imageUrl, id } = product;
+                    const { name, price, id } = product;
 
                     return (
                       <li
@@ -144,7 +144,7 @@ export default function ShoppingCart({
                     href="/cart"
                     className={
                       cart?.items.length < 1
-                        ? "btn btn-disabled btn-outline h-6 min-h-6 rounded-full px-3 text-xs"
+                        ? "btn btn-disabled btn-outline rounded-full px-3 text-xs"
                         : "btn btn-outline rounded-full px-3 text-xs"
                     }
                     style={{
@@ -155,12 +155,25 @@ export default function ShoppingCart({
                   </Link>
                 </li>
                 <li>
-                  <button
-                    disabled={cart?.items.length < 1}
-                    className="btn btn-outline  rounded-full px-3 text-xs"
+                  <Link
+                    onClick={() => {
+                      setShowModal(false);
+                      setTimeout(() => {
+                        closeCartModalOpen();
+                      }, 500);
+                    }}
+                    href="/checkout"
+                    style={{
+                      pointerEvents: cart?.items.length < 1 ? "none" : "auto",
+                    }}
+                    className={
+                      cart?.items.length < 1
+                        ? "btn btn-disabled btn-outline  rounded-full px-3 text-xs"
+                        : "btn btn-outline  rounded-full px-3 text-xs"
+                    }
                   >
                     Checkout
-                  </button>
+                  </Link>
                 </li>
                 <li>
                   <button

@@ -15,5 +15,5 @@ h5 {
 }
 
 .btn {
-  @apply h-[2.5rem] min-h-[2.5rem];
+  @apply h-[2rem] min-h-[2rem];
 }
