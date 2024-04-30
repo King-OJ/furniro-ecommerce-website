@@ -22,6 +22,8 @@ export default function ShoppingCart({
   cart,
   removeFromCart,
 }: ShoppingCartProps) {
+  // console.log(cart);
+
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -32,19 +34,17 @@ export default function ShoppingCart({
     }
   }, [isCartModalOpen]);
 
-  function closeModal() {
-    setShowModal(false);
-    setTimeout(() => {
-      closeCartModalOpen();
-    }, 500);
-  }
-
   return (
     <div
-      // onClick={closeModal}
+      onClick={() => {
+        setShowModal(false);
+        setTimeout(() => {
+          closeCartModalOpen();
+        }, 500);
+      }}
       className={
         isCartModalOpen
-          ? "fixed bottom-0 left-0 right-0 top-0 z-30 bg-black bg-opacity-30 transition-all duration-200"
+          ? "fixed bottom-0 left-0 right-0 top-0 z-50 bg-black bg-opacity-30 transition-all duration-200"
           : "hidden transition-all duration-200"
       }
     >
@@ -56,7 +56,10 @@ export default function ShoppingCart({
               : "absolute right-0 top-full h-0 transition-all duration-200"
           }
         >
-          <div className="flex min-h-64 min-w-80 flex-col justify-between bg-white py-4">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="flex min-h-64 min-w-80 flex-col justify-between bg-white py-4"
+          >
             <div className="px-4">
               <div className="flex items-start justify-between">
                 <h5 className="flex-1 border-b border-lightAsh pb-4 font-semibold">
@@ -74,7 +77,7 @@ export default function ShoppingCart({
                   <BsCartX fill="#898989" />
                 </button>
               </div>
-              {cart?.items.length > 0 ? (
+              {cart ? (
                 <ul className="my-4 w-full space-y-3">
                   {cart?.items.map((item) => {
                     const { product, quantity } = item;
@@ -143,12 +146,13 @@ export default function ShoppingCart({
                     }}
                     href="/cart"
                     className={
-                      cart?.items.length < 1
+                      !cart || cart.items.length < 1
                         ? "btn btn-disabled btn-outline rounded-full px-3 text-xs"
                         : "btn btn-outline rounded-full px-3 text-xs"
                     }
                     style={{
-                      pointerEvents: cart?.items.length < 1 ? "none" : "auto",
+                      pointerEvents:
+                        !cart || cart.items.length < 1 ? "none" : "auto",
                     }}
                   >
                     View cart
@@ -164,10 +168,11 @@ export default function ShoppingCart({
                     }}
                     href="/checkout"
                     style={{
-                      pointerEvents: cart?.items.length < 1 ? "none" : "auto",
+                      pointerEvents:
+                        !cart || cart.items.length < 1 ? "none" : "auto",
                     }}
                     className={
-                      cart?.items.length < 1
+                      !cart || cart.items.length < 1
                         ? "btn btn-disabled btn-outline  rounded-full px-3 text-xs"
                         : "btn btn-outline  rounded-full px-3 text-xs"
                     }
@@ -177,7 +182,7 @@ export default function ShoppingCart({
                 </li>
                 <li>
                   <button
-                    disabled={cart?.items.length < 1}
+                    disabled={!cart || cart.items.length < 1}
                     className="btn btn-outline  rounded-full px-3 text-xs"
                   >
                     Comparison

@@ -28,12 +28,12 @@ export default function AddToCart({
       disabled={isPending}
     >
       {isPending ? (
-        <span className="flex items-center space-x-1">
-          <span>Adding to Cart</span>
-          <span className="loading loading-spinner loading-xs" />
-        </span>
+        <div className="flex items-center space-x-1">
+          <span>Adding to cart</span>
+          <span className="loading loading-spinner loading-xs bg-primaryColor" />
+        </div>
       ) : (
-        "Add To Cart"
+        <span>Add To Cart</span>
       )}
     </button>
   );

@@ -17,7 +17,7 @@ export default async function page() {
             "use server";
             console.log("form submited");
           }}
-          className="grid grid-flow-col gap-10"
+          className="grid gap-6 sm:grid-flow-col md:gap-10"
         >
           <div className="w-full ">
             <h5 className="mb-8">billing details</h5>
@@ -116,7 +116,26 @@ export default async function page() {
                 your Order ID as the payment reference. Your order will not be
                 shipped until the funds have cleared in our account.
               </p>
-              <p className="my-4 text-xs leading-5">
+
+              <ul className="my-6 space-y-2 text-lightGrey">
+                <li className="flex items-center text-sm">
+                  <input
+                    checked
+                    type="checkbox"
+                    className="checkbox-secondary checkbox checkbox-sm mr-4 border-primaryColor hover:border-primaryColor"
+                  />
+                  Direct Bank Transfer
+                </li>
+                <li className="flex items-center text-sm">
+                  <input
+                    type="checkbox"
+                    className="checkbox-secondary checkbox checkbox-sm mr-4 border-primaryColor hover:border-primaryColor"
+                  />
+                  Cash on delivery
+                </li>
+              </ul>
+
+              <p className="mb-4 text-xs leading-5">
                 Your personal data will be used to support your experience
                 throughout this website, to manage access to your account, and
                 for other purposes described in our privacy policy.

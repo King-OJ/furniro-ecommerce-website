@@ -19,10 +19,10 @@ export default async function page() {
     <section>
       <SectionHeader>Cart</SectionHeader>
 
-      {cart.items.length > 0 ? (
-        <div className="m-6 grid grid-flow-col grid-cols-4 gap-4 md:m-10">
-          <div className="col-span-3">
-            <div className="grid grid-cols-5 gap-2 bg-cream py-1 text-sm">
+      {cart ? (
+        <div className="m-6 grid grid-flow-row gap-4 md:m-10 md:grid-flow-col md:grid-cols-4">
+          <div className="overflow-x-auto md:col-span-3 md:overflow-hidden">
+            <div className="grid grid-cols-5 gap-2 bg-cream py-1 text-sm ">
               <h6 className="col-start-2 font-semibold">Product</h6>
               <h6 className=" font-semibold">Price</h6>
               <h6 className=" font-semibold">Quantity</h6>
@@ -59,15 +59,18 @@ export default async function page() {
                 </li>
               </ul>
               <div className="flex justify-center">
-                <button className="btn btn-outline h-[2rem] min-h-[2rem]">
+                <Link
+                  href="/checkout"
+                  className="btn btn-outline h-[2rem] min-h-[2rem]"
+                >
                   Check out
-                </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       ) : (
-        <div className="m-6 flex min-h-[25vh] w-full items-center justify-center space-x-6">
+        <div className="m-6 flex min-h-[25vh] w-full items-center justify-center space-x-2">
           <h5>Your cart is empty!</h5>
           <Link href="/shop" className="btn btn-primary">
             Fill it

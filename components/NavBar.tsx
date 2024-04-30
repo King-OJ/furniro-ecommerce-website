@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BsPersonGear, BsHeart, BsCart } from "react-icons/bs";
+import { BsHeart } from "react-icons/bs";
 import { HiMenuAlt3 } from "react-icons/hi";
 import SearchBox from "./SearchBox";
 import ShoppingCartBtn from "./ShoppingCartBtn";
 import { redirect } from "next/navigation";
 import { getCart } from "@/utils/db/cart";
 import { removeFromCart } from "@/utils/actions";
+import ProfileBtn from "./ProfileBtn";
 
 const links = [
   {
@@ -39,7 +40,7 @@ const NavBar = async () => {
   const cart = await getCart();
 
   return (
-    <nav className="navbar justify-between bg-base-100 shadow-lg">
+    <nav className="navbar sticky top-0 z-40 justify-between bg-base-100 shadow-lg">
       <Link href="/" className="btn btn-ghost text-xl">
         <Image
           src="/furniroLogo.png"
@@ -71,9 +72,7 @@ const NavBar = async () => {
 
       <ul className=" hidden items-center space-x-1 md:flex">
         <li className="">
-          <button className="btn btn-circle btn-ghost text-lg hover:bg-lighterCream">
-            <BsPersonGear />
-          </button>
+          <ProfileBtn />
         </li>
         <li>
           <form action={searchProduct} className="flex items-center">

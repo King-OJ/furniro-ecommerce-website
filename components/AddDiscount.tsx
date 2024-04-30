@@ -14,7 +14,7 @@ export default function AddDiscount() {
             defaultChecked
             type="checkbox"
             onClick={() => setShowDiscountInput(!showDiscountInput)}
-            className="checkbox-secondary checkbox border-primaryColor"
+            className="checkbox-secondary checkbox checkbox-sm border-primaryColor"
           />
         </label>
       </div>

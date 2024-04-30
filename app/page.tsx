@@ -50,36 +50,36 @@ export default async function HomeServerComponent() {
           </div>
           {/* section content */}
           <div className="grid h-full gap-4 text-xl sm:grid-flow-col sm:grid-cols-3 sm:gap-6">
-            <div className="group flex flex-col items-center hover:cursor-pointer">
+            <div className="group flex flex-col items-center rounded-lg hover:cursor-pointer">
               <Image
                 src="/range1.png"
                 width={0}
                 height={0}
                 sizes="100vw"
                 alt="furniro logo"
-                className="h-auto w-full transition-all duration-200 group-hover:shadow-md"
+                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Dining</h6>
             </div>
-            <div className="group flex h-full flex-col items-center hover:cursor-pointer">
+            <div className="group flex h-full flex-col items-center rounded-lg hover:cursor-pointer">
               <Image
                 src="/range2.png"
                 width={0}
                 height={0}
                 sizes="100vw"
                 alt="furniro logo"
-                className="h-auto w-full transition-all duration-200 group-hover:shadow-md"
+                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Living</h6>
             </div>
-            <div className="group flex h-full flex-col items-center hover:cursor-pointer">
+            <div className="group flex h-full flex-col items-center rounded-lg hover:cursor-pointer">
               <Image
                 src="/range3.png"
                 width={0}
                 height={0}
                 sizes="100vw"
                 alt="furniro logo"
-                className="h-auto w-full transition-all duration-200 group-hover:shadow-md"
+                className="h-auto w-auto transition-all duration-200 group-hover:shadow-md"
               />
               <h6 className="mt-2 font-bold">Bedroom</h6>
             </div>

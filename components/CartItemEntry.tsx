@@ -44,21 +44,26 @@ export default function CartItemEntry({
       <div className="self-center text-sm text-thickAsh">
         {formatPrice(price)}
       </div>
-      <select
-        onChange={(e) => {
-          const newQuantity = parseInt(e.target.value);
-          startTransition(async () => {
-            await setProductQuantity(id, newQuantity);
-            toast("Item quantity changed");
-          });
-        }}
-        defaultValue={quantity}
-        id="quantity"
-        name="quantity"
-        className="select select-bordered h-[2rem] min-h-[2rem] max-w-[3.5rem] self-center  px-2 text-sm text-thickAsh"
-      >
-        {quantityOptions}
-      </select>
+      <div className="grid grid-flow-col items-center">
+        <select
+          onChange={(e) => {
+            const newQuantity = parseInt(e.target.value);
+            startTransition(async () => {
+              await setProductQuantity(id, newQuantity);
+              toast("Item quantity changed");
+            });
+          }}
+          defaultValue={quantity}
+          id="quantity"
+          name="quantity"
+          className="select select-bordered h-[2rem] min-h-[2rem] max-w-[3.5rem] self-center  px-2 text-sm text-thickAsh"
+        >
+          {quantityOptions}
+        </select>
+        {isPending && (
+          <span className="loading loading-spinner loading-xs bg-primaryColor" />
+        )}
+      </div>
       <div className="flex items-center justify-between self-center text-sm text-thickAsh">
         {formatPrice(price * quantity)}
         <DeleteFromCartBtn

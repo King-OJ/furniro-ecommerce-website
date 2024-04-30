@@ -36,14 +36,14 @@ export default function SingleProduct({
       <div className="relative">
         {/* overlay */}
         <div className="absolute bottom-0 left-0 right-0 h-0 w-full overflow-hidden bg-black bg-opacity-40 transition-all duration-200 group-hover:z-10 group-hover:h-full">
-          <div className="grid h-full w-full place-content-center">
+          <div className=" flex h-full w-full flex-col justify-center px-2">
             <AddToCart
               path={path}
               addToCart={addToCart}
               productId={id}
-              className="btn h-8 min-h-8 rounded-none px-3 py-[2px] text-sm font-semibold text-primaryColor"
+              className="btn w-full rounded-none px-3 py-[2px] text-sm font-semibold text-primaryColor disabled:bg-opacity-100"
             />
-            <ul className="mt-3 flex items-center space-x-4">
+            <ul className="mt-3 flex items-center justify-between">
               <li className="flex items-center space-x-1 text-xs text-white">
                 <BsShare />
                 <span>Share</span>
