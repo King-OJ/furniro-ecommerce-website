@@ -82,21 +82,23 @@ export default function SingleProduct({
         />
       </div>
       <Link href={`/shop/${id}`}>
-        <div className="space-y-1 p-3">
-          <h6 className="truncate font-bold capitalize">{name}</h6>
-          <p className="truncate text-xs text-thickAsh">{title}</p>
+        <div className="space-y-1 p-2 md:p-3">
+          <h6 className="truncate text-sm font-bold capitalize md:text-base">
+            {name}
+          </h6>
+          <p className="truncate text-xs text-thickAsh md:text-sm">{title}</p>
           {discount > 0 ? (
             <div className="flex items-center justify-between">
-              <p className="text-sm font-bold">
+              <p className="text-xs font-bold md:text-sm">
                 {formatPrice(discountedPrice || price)}
               </p>
 
-              <p className="text-xs font-bold text-lightAsh line-through">
+              <p className="text-xs font-bold text-lightAsh line-through md:text-sm">
                 {formatPrice(price)}
               </p>
             </div>
           ) : (
-            <p className="text-sm font-bold">{formatPrice(price)}</p>
+            <p className="text-xs font-bold md:text-sm">{formatPrice(price)}</p>
           )}
         </div>
       </Link>

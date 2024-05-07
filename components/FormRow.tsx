@@ -22,7 +22,7 @@ export default function FormRow({
     <div className="mb-6">
       <label
         htmlFor={name}
-        className="mb-2 block text-sm font-semibold capitalize"
+        className="mb-2 block text-left text-sm font-semibold capitalize"
       >
         {title}
       </label>

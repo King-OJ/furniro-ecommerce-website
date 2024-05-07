@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsHeart } from "react-icons/bs";
-import { HiMenuAlt3 } from "react-icons/hi";
 import SearchBox from "./SearchBox";
 import ShoppingCartBtn from "./ShoppingCartBtn";
 import { redirect } from "next/navigation";
 import { getCart } from "@/utils/db/cart";
 import { removeFromCart } from "@/utils/actions";
 import ProfileBtn from "./ProfileBtn";
+import { FaShoppingCart } from "react-icons/fa";
 
 const links = [
   {
@@ -40,7 +40,7 @@ const NavBar = async () => {
   const cart = await getCart();
 
   return (
-    <nav className="navbar sticky top-0 z-40 justify-between bg-base-100 shadow-lg">
+    <nav className="navbar z-40 justify-between bg-base-100 shadow-lg md:sticky md:top-0">
       <Link href="/" className="btn btn-ghost text-xl">
         <Image
           src="/furniroLogo.png"
@@ -54,8 +54,8 @@ const NavBar = async () => {
         <h3>Furniro</h3>
       </Link>
 
-      <button className="block md:hidden">
-        <HiMenuAlt3 size={30} />
+      <button className="mr-2 block md:hidden">
+        <ShoppingCartBtn cart={cart} removeFromCart={removeFromCart} />
       </button>
 
       <ul className="menu menu-horizontal hidden md:flex">

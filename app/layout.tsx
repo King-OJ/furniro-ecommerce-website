@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import SessionProvider from "./SessionProvider";
+import BottomNavBar from "@/components/BottomNavBar";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -38,6 +39,7 @@ export default function RootLayout({
           <NavBar />
           <main className="min-h-[65vh]">{children}</main>
           <Footer />
+          <BottomNavBar />
         </SessionProvider>
       </body>
     </html>
