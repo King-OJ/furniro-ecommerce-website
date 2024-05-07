@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BsX } from "react-icons/bs";
 import SignInForm from "./SignInForm";
+import { FaTimes } from "react-icons/fa";
 
 interface ProfileModalProps {
   isProfileModalOpen: boolean;
@@ -37,36 +37,38 @@ export default function ProfileModal({
           : "hidden transition-all duration-200"
       }
     >
-      <div className="m-10">
-        <div
-          className={
-            showModal
-              ? "translate-y-0 opacity-100 transition-all duration-200"
-              : "translate-y-full opacity-0 transition-all duration-200"
-          }
-        >
+      <div className="flex h-screen w-full items-center">
+        <div className="flex-1">
           <div
-            onClick={(e) => e.stopPropagation()}
-            className="mx-auto w-full max-w-2xl bg-white px-6 py-4"
+            className={
+              showModal
+                ? "translate-y-0 opacity-100 transition-all duration-200"
+                : "translate-y-full opacity-0 transition-all duration-200"
+            }
           >
-            <div className="flex w-full justify-end">
-              <button
-                onClick={() => {
-                  setShowModal(false);
-                  setTimeout(() => {
-                    closeProfileModal();
-                  }, 500);
-                }}
-                type="button"
-              >
-                <BsX
-                  size={30}
-                  fill="#B88E2F"
-                  className="rounded-full p-1 hover:bg-cream"
-                />
-              </button>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="mx-auto w-[90%] max-w-2xl bg-white px-6 py-4"
+            >
+              <div className="flex w-full justify-end">
+                <button
+                  onClick={() => {
+                    setShowModal(false);
+                    setTimeout(() => {
+                      closeProfileModal();
+                    }, 500);
+                  }}
+                  type="button"
+                >
+                  <FaTimes
+                    size={30}
+                    fill="#B88E2F"
+                    className="rounded-full p-1 hover:bg-cream"
+                  />
+                </button>
+              </div>
+              <SignInForm />
             </div>
-            <SignInForm />
           </div>
         </div>
       </div>

@@ -7,10 +7,8 @@ export default function SignInForm() {
   const [isNewMember, setIsNewMember] = useState(false);
 
   return (
-    <form action="" className="my-8">
-      <h5 className="mb-6 w-full text-center">
-        {isNewMember ? "Sign Up" : "Log In"}
-      </h5>
+    <form action="" className="mb-8 w-full">
+      <h5 className="mb-6 text-center">{isNewMember ? "Sign Up" : "Log In"}</h5>
       {isNewMember && (
         <>
           <div className="grid w-full grid-cols-2 gap-4">
@@ -23,7 +21,7 @@ export default function SignInForm() {
       )}
       <FormRow name="email" type="email" title="email" required />
       <FormRow name="password" type="password" title="password" required />
-      <div className="my-4">
+      <div className="my-4 text-sm">
         {isNewMember ? "Already a member?" : "Don't have an account yet? "}
         <button
           type="button"

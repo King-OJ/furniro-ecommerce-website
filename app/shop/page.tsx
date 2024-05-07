@@ -57,7 +57,7 @@ const page = async () => {
 
       <section id="products">
         <div className="px-4 py-10 md:px-10 md:py-16">
-          <ul className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-6">
+          <ul className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
             {allProducts.map((product, i) => {
               return (
                 <SingleProduct

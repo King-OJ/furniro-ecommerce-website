@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { BsPersonGear } from "react-icons/bs";
 import ProfileModal from "./ProfileModal";
+import { FaUserCircle } from "react-icons/fa";
 
 export default function ProfileBtn() {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -14,7 +14,7 @@ export default function ProfileBtn() {
         }}
         className="btn btn-circle btn-ghost text-lg hover:bg-lighterCream"
       >
-        <BsPersonGear />
+        <FaUserCircle />
       </button>
       <ProfileModal
         isProfileModalOpen={isProfileModalOpen}
