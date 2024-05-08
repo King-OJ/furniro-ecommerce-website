@@ -58,10 +58,10 @@ const page = () => {
 
             <div className="col-span-2">
               <form action="" className="w-full">
-                <FormRow title="Your name" name="name" type="text" />
-                <FormRow title="Your email" name="email" type="email" />
+                <FormRow title="Your name" name="contact_name" type="text" />
+                <FormRow title="Your email" name="contact_email" type="email" />
                 <FormRow title="Subject" name="subject" type="text" />
-                <FormRow title="Message" name="name" textArea />
+                <FormRow title="Message" name="contact_message" textArea />
                 <button className="btn btn-primary mt-8 block min-w-[150px] rounded-[4px]">
                   Submit
                 </button>

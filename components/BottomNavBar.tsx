@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import { FaHouse, FaShop } from "react-icons/fa6";
 import ProfileBtn from "./ProfileBtn";
+import MobileProfileBtn from "./MobileProfileBtn";
 
 export default function BottomNavBar() {
   return (
@@ -34,7 +35,7 @@ export default function BottomNavBar() {
           </li>
 
           <li className="w-full">
-            <ProfileBtn />
+            <MobileProfileBtn />
           </li>
         </ul>
       </div>

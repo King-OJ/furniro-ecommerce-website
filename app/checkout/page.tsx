@@ -1,3 +1,4 @@
+import Checkbox from "@/components/Checkbox";
 import FeaturesSection from "@/components/FeaturesSection";
 import FormRow from "@/components/FormRow";
 import FormSubmitBtn from "@/components/FormSubmitBtn";
@@ -27,27 +28,43 @@ export default async function page() {
                 name="firstName"
                 type="text"
                 required
+                id="first_name"
               />
-              <FormRow title="last name" name="lastName" type="text" required />
+              <FormRow
+                title="last name"
+                name="lastName"
+                type="text"
+                required
+                id="last_name"
+              />
             </div>
             <FormRow
               title="company name (optional)"
               name="companyName"
               type="text"
+              id="company_name"
             />
             <FormRow
               title="country / region"
               name="country"
               type="text"
               required
+              id="country"
             />
             <FormRow
               title="street address"
               name="street"
               type="text"
               required
+              id="street"
             />
-            <FormRow title="town / city" name="city" type="text" required />
+            <FormRow
+              title="town / city"
+              name="city"
+              type="text"
+              required
+              id="city"
+            />
             <FormRow
               title="company name (optional)"
               name="companyName"
@@ -119,19 +136,10 @@ export default async function page() {
 
               <ul className="my-6 space-y-2 text-lightGrey">
                 <li className="flex items-center text-sm">
-                  <input
-                    checked
-                    type="checkbox"
-                    className="checkbox-secondary checkbox checkbox-sm mr-4 border-primaryColor hover:border-primaryColor"
-                  />
-                  Direct Bank Transfer
+                  <Checkbox text="Direct Bank Transfer" checked />
                 </li>
                 <li className="flex items-center text-sm">
-                  <input
-                    type="checkbox"
-                    className="checkbox-secondary checkbox checkbox-sm mr-4 border-primaryColor hover:border-primaryColor"
-                  />
-                  Cash on delivery
+                  <Checkbox text="Cash on delivery" checked={false} />
                 </li>
               </ul>
 

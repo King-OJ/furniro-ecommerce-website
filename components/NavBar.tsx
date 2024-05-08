@@ -7,7 +7,8 @@ import { redirect } from "next/navigation";
 import { getCart } from "@/utils/db/cart";
 import { removeFromCart } from "@/utils/actions";
 import ProfileBtn from "./ProfileBtn";
-import { FaShoppingCart } from "react-icons/fa";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const links = [
   {
@@ -38,6 +39,7 @@ async function searchProduct(formData: FormData) {
 
 const NavBar = async () => {
   const cart = await getCart();
+  const session = await getServerSession(authOptions);
 
   return (
     <nav className="navbar z-40 justify-between bg-base-100 shadow-lg md:sticky md:top-0">
@@ -54,9 +56,9 @@ const NavBar = async () => {
         <h3>Furniro</h3>
       </Link>
 
-      <button className="mr-2 block md:hidden">
+      <div className="mr-2 md:hidden">
         <ShoppingCartBtn cart={cart} removeFromCart={removeFromCart} />
-      </button>
+      </div>
 
       <ul className="menu menu-horizontal hidden md:flex">
         {links.map((link, i) => {
@@ -70,19 +72,19 @@ const NavBar = async () => {
         })}
       </ul>
 
-      <ul className=" hidden items-center space-x-1 md:flex">
-        <li className="">
-          <ProfileBtn />
-        </li>
+      <ul className=" hidden items-center space-x-2 md:flex">
         <li>
           <form action={searchProduct} className="flex items-center">
             <SearchBox />
           </form>
         </li>
-        <li className="">
+        {/* <li className="">
           <button className="btn btn-circle btn-ghost text-lg hover:bg-lighterCream">
             <BsHeart />
           </button>
+        </li> */}
+        <li className="">
+          <ProfileBtn session={session} />
         </li>
         <li className="">
           <ShoppingCartBtn cart={cart} removeFromCart={removeFromCart} />

@@ -3,6 +3,7 @@ import { ComponentProps } from "react";
 type FormRowProps = {
   name: string;
   type?: string;
+  id?: string;
   title: string;
   textArea?: boolean;
   placeholder?: string;
@@ -10,6 +11,7 @@ type FormRowProps = {
 } & ComponentProps<"input">;
 
 export default function FormRow({
+  id,
   name,
   type,
   title,
@@ -21,7 +23,7 @@ export default function FormRow({
   return (
     <div className="mb-6">
       <label
-        htmlFor={name}
+        htmlFor={id}
         className="mb-2 block text-left text-sm font-semibold capitalize"
       >
         {title}
@@ -29,7 +31,7 @@ export default function FormRow({
       {textArea ? (
         <textarea
           required={required}
-          id={name}
+          id={id}
           name={name}
           className="textarea textarea-bordered w-full"
         />
@@ -38,10 +40,10 @@ export default function FormRow({
           {...props}
           required={required}
           placeholder={placeholder}
-          id={name}
+          id={id}
           type={type}
           name={name}
-          className="input input-bordered w-full"
+          className="input input-bordered h-[2.5rem] w-full leading-[10px] md:h-[3rem] md:leading-[20px]"
         />
       )}
     </div>

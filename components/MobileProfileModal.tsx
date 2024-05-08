@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import RegisterForm from "./RegisterForm";
-import LoginForm from "./LoginForm";
+import MobileRegisterForm from "./MobileRegisterForm";
+import MobileLoginForm from "./MobileLoginForm";
 
 interface ProfileModalProps {
   isProfileModalOpen: boolean;
   closeProfileModal: () => void;
 }
 
-export default function ProfileModal({
+export default function MobileProfileModal({
   isProfileModalOpen,
   closeProfileModal,
 }: ProfileModalProps) {
@@ -70,12 +70,12 @@ export default function ProfileModal({
                 </button>
               </div>
               {isNewMember ? (
-                <RegisterForm
+                <MobileRegisterForm
                   setIsNewMember={setIsNewMember}
                   isNewMember={isNewMember}
                 />
               ) : (
-                <LoginForm
+                <MobileLoginForm
                   setIsNewMember={setIsNewMember}
                   isNewMember={isNewMember}
                 />

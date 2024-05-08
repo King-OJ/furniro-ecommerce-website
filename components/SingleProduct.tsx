@@ -35,7 +35,7 @@ export default function SingleProduct({
     <li className="group w-full cursor-pointer bg-ashColor">
       <div className="relative">
         {/* overlay */}
-        <div className="absolute bottom-0 left-0 right-0 h-0 w-full overflow-hidden bg-black bg-opacity-40 transition-all duration-200 group-hover:z-10 group-hover:h-full">
+        <div className="absolute bottom-0 left-0 right-0 hidden h-0 w-full overflow-hidden bg-black bg-opacity-40 transition-all duration-200 group-hover:z-10 group-hover:h-full md:block">
           <div className=" flex h-full w-full flex-col justify-center px-2">
             <AddToCart
               path={path}
@@ -74,6 +74,7 @@ export default function SingleProduct({
 
         <Image
           src={imageUrl}
+          priority
           width={0}
           height={0}
           sizes="100vw"
